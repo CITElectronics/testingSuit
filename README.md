@@ -1,7 +1,7 @@
 # TestingSuit
 
 ### Prerequisite
-####Update google chrome to newest version
+#### Update google chrome to newest version
 
 ### Downloads
 #### Download the MSI and exe files. 
