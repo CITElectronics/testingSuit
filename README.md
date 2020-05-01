@@ -23,5 +23,5 @@
 #### -test/elixir_sdet_exercise/elixir_sdet_exercise
 #### -Type mix test and enter.
 
-#### -Documentation for code
+### Documentation for code
 #### -https://hexdocs.pm/hound/Hound.Helpers.Element.html
