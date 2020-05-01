@@ -6,8 +6,7 @@
 ### Downloads
 #### -Download the MSI and exe files. 
 #### -https://drive.google.com/drive/folders/1FckgZDewoE489PoSqI-E-5j3vhUtGzRw
-#### -Download and unzip the test file.
-#### -Open bash in vs code and cd to /test/elixir_sdet_exercise/elixir_sdet_exercise
+#### -Open bash in vs code and cd to /Testing/elixir_sdet_exercise/elixir_sdet_exercise
 #### -Then type mix and enter. Enter y for everything it asks you to download. It will take a while.
 #### -Close All and restart computer.
 
