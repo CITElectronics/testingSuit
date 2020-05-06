@@ -6,7 +6,6 @@ defmodule ElixirSdetExerciseTest do
   # Start hound session and destroy when tests are run
   hound_session()
 
- def url = "https://citelectronics.com"
  test "0001 Check Site Load" do
   navigate_to("https://citelectronics.com") 
    take_screenshot("0001.png") 
