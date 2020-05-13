@@ -18,13 +18,21 @@ defmodule ElixirSdetExerciseTest do
   Logger.debug testEnd
   take_screenshot("LP001-Create an account button.png") 
  end
-  test "LP002 Forgot Your Password button" do
+ test "LP002 Forgot Your Password button" do
   navigate_to("https://www.citelectronics.com/login.php") 
   click({:id, "testForgot"})
   passwordIsThere = find_element(:id, "passwordRID")
   testEnd = inner_text(passwordIsThere)
   Logger.debug testEnd
   take_screenshot("LP002-Forgot-Your-Password-button.png") 
+ end
+ test "LP003 Log in button" do
+  navigate_to("https://www.citelectronics.com/login.php") 
+  click({:id, "login_button"})
+  loginIsThere = find_element(:id, "testLogin")
+  testEnd = inner_text(loginIsThere)
+  Logger.debug testEnd
+  take_screenshot("LP003-Log-in-button.png") 
  end
 #  test "LP008 User Type check login - 9" do
 #   navigate_to "https://www.citelectronics.com/welcome.php?p=0&s=0"
