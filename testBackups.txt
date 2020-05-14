@@ -6,17 +6,6 @@ defmodule ElixirSdetExerciseTest do
   # Start hound session and destroy when tests are run
   hound_session()
 
-#  testc@citelectronics.com customer
-#  tests@citelectronics.com sales
-#  testsa@citelectronics.com sales admin
-#  testm@citelectronics.com marketing
-#  testt@citelectronics.com techdepot
-#  testta@citelectronics.com techdepot admin
-#  testtn@citelectronics.com techdepot nws admin
-#  testtf@citelectronics.com techdepot full
-#  testd@citelectronics.com dev
-#  password techteam
-
  test "HP0001 Check Site Load" do
   navigate_to("https://citelectronics.com") 
    take_screenshot("HP0001.png") 
@@ -45,43 +34,6 @@ defmodule ElixirSdetExerciseTest do
   Logger.debug testEnd
   take_screenshot("LP003-Log-in-button.png") 
  end
- test "LP004 User Type check login - 5" do
-  navigate_to("https://www.citelectronics.com/login.php")
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testt@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "user")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP004-User-Type-check-login-5.png") 
- end
- test "LP005 User Type check login - 6" do
-  navigate_to("https://www.citelectronics.com/login.php") 
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testsa@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:class, "box_header")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP005-User-Type-check-login-6.png") 
- end
- test "LP006 User Type check login - 7" do
-  navigate_to("https://www.citelectronics.com/login.php") 
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testd@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "testingDev")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP006-User-Type-check-login-7.png") 
- end
-
 #  test "LP008 User Type check login - 9" do
 #   navigate_to "https://www.citelectronics.com/welcome.php?p=0&s=0"
 #    email = find_element(:id, "emailTest")
