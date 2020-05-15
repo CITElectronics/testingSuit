@@ -81,7 +81,42 @@ defmodule ElixirSdetExerciseTest do
   Logger.debug testEnd
   take_screenshot("LP006-User-Type-check-login-7.png") 
  end
-
+ test "LP004 User Type check login - 11" do
+  navigate_to("https://www.citelectronics.com/login.php")
+  email = find_element(:id, "emailTest")
+  password = find_element(:id, "passwordTest") 
+  fill_field(email, "testta@citelectronics.com")
+  fill_field(password, "techteam")
+  click({:id, "login_button"})
+  loginIsThere = find_element(:id, "user")
+  testEnd = inner_text(loginIsThere)
+  Logger.debug testEnd
+  take_screenshot("LP004-User-Type-check-login-5.png") 
+ end
+  test "LP004 User Type check login - 12" do
+  navigate_to("https://www.citelectronics.com/login.php")
+  email = find_element(:id, "emailTest")
+  password = find_element(:id, "passwordTest") 
+  fill_field(email, "testtn@citelectronics.com")
+  fill_field(password, "techteam")
+  click({:id, "login_button"})
+  loginIsThere = find_element(:id, "user")
+  testEnd = inner_text(loginIsThere)
+  Logger.debug testEnd
+  take_screenshot("LP004-User-Type-check-login-5.png") 
+ end
+  test "LP004 User Type check login - 13" do
+  navigate_to("https://www.citelectronics.com/login.php")
+  email = find_element(:id, "emailTest")
+  password = find_element(:id, "passwordTest") 
+  fill_field(email, "testtf@citelectronics.com")
+  fill_field(password, "techteam")
+  click({:id, "login_button"})
+  loginIsThere = find_element(:id, "user")
+  testEnd = inner_text(loginIsThere)
+  Logger.debug testEnd
+  take_screenshot("LP004-User-Type-check-login-5.png") 
+ end
 #  test "LP008 User Type check login - 9" do
 #   navigate_to "https://www.citelectronics.com/welcome.php?p=0&s=0"
 #    email = find_element(:id, "emailTest")
