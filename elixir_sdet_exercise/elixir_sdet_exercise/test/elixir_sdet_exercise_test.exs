@@ -18,9 +18,9 @@ defmodule ElixirSdetExerciseTest do
 #  password techteam
 
  test "HP0001 Check Site Load" do
-  navigate_to("https://citelectronics.com") 
+   navigate_to("https://citelectronics.com") 
    take_screenshot("HP0001.png") 
- end
+  end
  test "LP001 Create an account button" do
   navigate_to("https://www.citelectronics.com/login.php") 
   click({:id, "createAccount_button"})
@@ -28,7 +28,7 @@ defmodule ElixirSdetExerciseTest do
   testEnd = inner_text(createIsThere)
   Logger.debug testEnd
   take_screenshot("LP001-Create an account button.png") 
- end
+  end
  test "LP002 Forgot Your Password button" do
   navigate_to("https://www.citelectronics.com/login.php") 
   click({:id, "testForgot"})
@@ -36,7 +36,7 @@ defmodule ElixirSdetExerciseTest do
   testEnd = inner_text(passwordIsThere)
   Logger.debug testEnd
   take_screenshot("LP002-Forgot-Your-Password-button.png") 
- end
+  end
  test "LP003 Log in button" do
   navigate_to("https://www.citelectronics.com/login.php") 
   click({:id, "login_button"})
@@ -44,7 +44,7 @@ defmodule ElixirSdetExerciseTest do
   testEnd = inner_text(loginIsThere)
   Logger.debug testEnd
   take_screenshot("LP003-Log-in-button.png") 
- end
+  end
  test "LP004 User Type check login - 5" do
   navigate_to("https://www.citelectronics.com/login.php")
   email = find_element(:id, "emailTest")
@@ -56,7 +56,7 @@ defmodule ElixirSdetExerciseTest do
   testEnd = inner_text(loginIsThere)
   Logger.debug testEnd
   take_screenshot("LP004-User-Type-check-login-5.png") 
- end
+  end
  test "LP005 User Type check login - 6" do
   navigate_to("https://www.citelectronics.com/login.php") 
   email = find_element(:id, "emailTest")
@@ -68,7 +68,7 @@ defmodule ElixirSdetExerciseTest do
   testEnd = inner_text(loginIsThere)
   Logger.debug testEnd
   take_screenshot("LP005-User-Type-check-login-6.png") 
- end
+  end
  test "LP006 User Type check login - 7" do
   navigate_to("https://www.citelectronics.com/login.php") 
   email = find_element(:id, "emailTest")
@@ -80,8 +80,8 @@ defmodule ElixirSdetExerciseTest do
   testEnd = inner_text(loginIsThere)
   Logger.debug testEnd
   take_screenshot("LP006-User-Type-check-login-7.png") 
- end
- test "LP004 User Type check login - 11" do
+  end
+ test "LP010 User Type check login - 11" do
   navigate_to("https://www.citelectronics.com/login.php")
   email = find_element(:id, "emailTest")
   password = find_element(:id, "passwordTest") 
@@ -91,9 +91,9 @@ defmodule ElixirSdetExerciseTest do
   loginIsThere = find_element(:id, "user")
   testEnd = inner_text(loginIsThere)
   Logger.debug testEnd
-  take_screenshot("LP004-User-Type-check-login-5.png") 
- end
-  test "LP004 User Type check login - 12" do
+  take_screenshot("LP010-User-Type-check-login-11.png") 
+  end
+ test "LP011 User Type check login - 12" do
   navigate_to("https://www.citelectronics.com/login.php")
   email = find_element(:id, "emailTest")
   password = find_element(:id, "passwordTest") 
@@ -103,9 +103,9 @@ defmodule ElixirSdetExerciseTest do
   loginIsThere = find_element(:id, "user")
   testEnd = inner_text(loginIsThere)
   Logger.debug testEnd
-  take_screenshot("LP004-User-Type-check-login-5.png") 
- end
-  test "LP004 User Type check login - 13" do
+  take_screenshot("LP011-User-Type-check-login-12.png") 
+  end
+ test "LP012 User Type check login - 13" do
   navigate_to("https://www.citelectronics.com/login.php")
   email = find_element(:id, "emailTest")
   password = find_element(:id, "passwordTest") 
@@ -115,8 +115,44 @@ defmodule ElixirSdetExerciseTest do
   loginIsThere = find_element(:id, "user")
   testEnd = inner_text(loginIsThere)
   Logger.debug testEnd
-  take_screenshot("LP004-User-Type-check-login-5.png") 
- end
+  take_screenshot("LP012-User-Type-check-login-13.png") 
+  end
+ test "LP007 User Type check login - 8" do
+  navigate_to("https://www.citelectronics.com/login.php")
+  email = find_element(:id, "emailTest")
+  password = find_element(:id, "passwordTest") 
+  fill_field(email, "tests@citelectronics.com")
+  fill_field(password, "techteam")
+  click({:id, "login_button"})
+  loginIsThere = find_element(:id, "testingS")
+  testEnd = inner_text(loginIsThere)
+  Logger.debug testEnd
+  take_screenshot("LP007-User-Type-check-login-8.png") 
+  end
+ test "LP008 User Type check login - 9" do
+  navigate_to("https://www.citelectronics.com/login.php")
+  email = find_element(:id, "emailTest")
+  password = find_element(:id, "passwordTest") 
+  fill_field(email, "testc@citelectronics.com")
+  fill_field(password, "techteam")
+  click({:id, "login_button"})
+  loginIsThere = find_element(:id, "update_countdown")
+  testEnd = inner_text(loginIsThere)
+  Logger.debug testEnd
+  take_screenshot("LP008-User-Type-check-login-9.png") 
+  end
+ test "LP013 User Type check login - 14" do
+  navigate_to("https://www.citelectronics.com/login.php")
+  email = find_element(:id, "emailTest")
+  password = find_element(:id, "passwordTest") 
+  fill_field(email, "testm@citelectronics.com")
+  fill_field(password, "techteam")
+  click({:id, "login_button"})
+  loginIsThere = find_element(:id, "title")
+  testEnd = inner_text(loginIsThere)
+  Logger.debug testEnd
+  take_screenshot("LP013-User-Type-check-login-14.png") 
+  end  
 #  test "LP008 User Type check login - 9" do
 #   navigate_to "https://www.citelectronics.com/welcome.php?p=0&s=0"
 #    email = find_element(:id, "emailTest")
