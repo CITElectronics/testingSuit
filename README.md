@@ -1,26 +1,26 @@
 # testingSuit
-## Prerequisite- Update google chrome to newest version
+### Prerequisite- Update google chrome to newest version
 
  
-## Downloads-
-## Download the MSI and exe files. 
-## https://drive.google.com/drive/folders/1FckgZDewoE489PoSqI-E-5j3vhUtGzRw
+### Downloads-
+### Download the MSI and exe files. 
+### https://drive.google.com/drive/folders/1FckgZDewoE489PoSqI-E-5j3vhUtGzRw
 
-## Download and unzip the test file.
+### Download and unzip the test file.
 
-## Open Command prompt and path to the test file
-## FE: Cd C:\Users\0032\Desktop\Testing
+### Open Command prompt and path to the test file
+### FE: Cd C:\Users\0032\Desktop\Testing
 
-## Run this webdriver command to start the server
-## java -Dwebdriver.chrome.driver="chromedriver.exe" -jar selenium-server-standalone-2.45.0.jar -port 5555
+### Run this webdriver command to start the server
+### java -Dwebdriver.chrome.driver="chromedriver.exe" -jar selenium-server-standalone-2.45.0.jar -port 5555
 
 
 
-## Open the link to view the server.
-## FE: http://127.0.0.1:5555/wd/hub
+### Open the link to view the server.
+### FE: http://127.0.0.1:5555/wd/hub
 
-## On that webpage click create session
-## Click chrome on the dropdown and click okay. A new web page should open and the command prompt will have “your ip  INFO - Done: [new session: Capabilities [{browserName=chrome}]]” if done correctly.
+### On that webpage click create session
+### Click chrome on the dropdown and click okay. A new web page should open and the command prompt will have “your ip  INFO - Done: [new session: Capabilities [{browserName=chrome}]]” if done correctly.
 
 ## Open the test folder in vs code.
 
