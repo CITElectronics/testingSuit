@@ -1,319 +1,204 @@
 defmodule ElixirSdetExerciseTest do
-  # Import helpers
-  use Hound.Helpers
-  use ExUnit.Case
-  require Logger
-  # Start hound session and destroy when tests are run
-  hound_session()
+   # Import helpers
+   use Hound.Helpers
+   use ExUnit.Case
+   require Logger
+   # Start hound session and destroy when tests are run
+   hound_session()
 
-#  testc@citelectronics.com customer
-#  tests@citelectronics.com sales
-#  testsa@citelectronics.com sales admin
-#  testm@citelectronics.com marketing
-#  testt@citelectronics.com techdepot
-#  testta@citelectronics.com techdepot admin
-#  testtn@citelectronics.com techdepot nws admin
-#  testtf@citelectronics.com techdepot full
-#  testd@citelectronics.com dev
-#  password techteam
+   ###################################
+   ### ===CUSTOMER PORTAL TESTS=== ###
+   ###################################
 
- test "HP0001 Check Site Load" do
-   navigate_to("https://citelectronics.com") 
-   take_screenshot("HP0001.png") 
-  end
- test "LP001 Create an account button" do
-  navigate_to("https://www.citelectronics.com/login.php") 
-  click({:id, "createAccount_button"})
-  createIsThere = find_element(:id, "page_header")
-  testEnd = inner_text(createIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP001-Create an account button.png") 
-  end
- test "LP002 Forgot Your Password button" do
-  navigate_to("https://www.citelectronics.com/login.php") 
-  click({:id, "testForgot"})
-  passwordIsThere = find_element(:id, "passwordRID")
-  testEnd = inner_text(passwordIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP002-Forgot-Your-Password-button.png") 
-  end
- test "LP003 Log in button" do
-  navigate_to("https://www.citelectronics.com/login.php") 
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "testLogin")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP003-Log-in-button.png") 
-  end
- test "LP004 User Type check login - 5" do
-  navigate_to("https://www.citelectronics.com/login.php")
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testt@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "user")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP004-User-Type-check-login-5.png") 
-  end
- test "LP005 User Type check login - 6" do
-  navigate_to("https://www.citelectronics.com/login.php") 
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testsa@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:class, "box_header")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP005-User-Type-check-login-6.png") 
-  end
- test "LP006 User Type check login - 7" do
-  navigate_to("https://www.citelectronics.com/login.php") 
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testd@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "testingDev")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP006-User-Type-check-login-7.png") 
-  end
- test "LP007 User Type check login - 8" do
-  navigate_to("https://www.citelectronics.com/login.php")
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "tests@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "testingS")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP007-User-Type-check-login-8.png") 
-  end
- test "LP008 User Type check login - 9" do
-  navigate_to("https://www.citelectronics.com/login.php")
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testc@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "update_countdown")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP008-User-Type-check-login-9.png") 
-  end
- test "LP010 User Type check login - 11" do
-  navigate_to("https://www.citelectronics.com/login.php")
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testta@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "user")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP010-User-Type-check-login-11.png") 
-  end
- test "LP011 User Type check login - 12" do
-  navigate_to("https://www.citelectronics.com/login.php")
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testtn@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "user")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP011-User-Type-check-login-12.png") 
-  end
- test "LP012 User Type check login - 13" do
-  navigate_to("https://www.citelectronics.com/login.php")
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testtf@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "user")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP012-User-Type-check-login-13.png") 
-  end
- test "LP013 User Type check login - 14" do
-  navigate_to("https://www.citelectronics.com/login.php")
-  email = find_element(:id, "emailTest")
-  password = find_element(:id, "passwordTest") 
-  fill_field(email, "testm@citelectronics.com")
-  fill_field(password, "techteam")
-  click({:id, "login_button"})
-  loginIsThere = find_element(:id, "title")
-  testEnd = inner_text(loginIsThere)
-  Logger.debug testEnd
-  take_screenshot("LP013-User-Type-check-login-14.png") 
-  end  
- test "LP014 Save and Continue - All filled out" do
-    navigate_to("https://www.citelectronics.com/main/h/customerApplication.php")
-    fName = find_element(:id, "nameTest")
-    lName = find_element(:id, "lNameTest") 
-    company = find_element(:id, "companyTest")
-    phone = find_element(:id, "phoneTest")
-    whatsApp = find_element(:id, "whatsAppTest")
-    email = find_element(:id, "emailTest")
-    fill_field(fName, "testF")
-    fill_field(lName, "testL")
-    fill_field(company, "testC")
-    fill_field(phone, "8018018108")
-    fill_field(whatsApp, "8018018108")
-    fill_field(email, "testc@citelectronics.com")
-    click({:id, "savenameTest"})
-    loginIsThere = find_element(:id, "testText")
-    testEnd = inner_text(loginIsThere)
-    Logger.debug testEnd
-    take_screenshot("LP014-Save-and-Continue-All-filled-out.png") 
-    end   
- test "LP015 Save and Continue - None filled out" do
-    navigate_to("https://www.citelectronics.com/main/h/customerApplication.php")
-    click({:id, "savenameTest"})
-    loginIsThere = find_element(:id, "testText")
-    testEnd = inner_text(loginIsThere)
-    Logger.debug testEnd
-    take_screenshot("LP015-Save-and-Continue-None-filled-out.png") 
-    end   
- test "LP016 Save and Continue - missing email" do
-    navigate_to("https://www.citelectronics.com/main/h/customerApplication.php")
-    fName = find_element(:id, "nameTest")
-    lName = find_element(:id, "lNameTest") 
-    company = find_element(:id, "companyTest")
-    phone = find_element(:id, "phoneTest")
-    whatsApp = find_element(:id, "whatsAppTest")
-    fill_field(fName, "testF")
-    fill_field(lName, "testL")
-    fill_field(company, "testC")
-    fill_field(phone, "8018018108")
-    fill_field(whatsApp, "8018018108")
-    click({:id, "savenameTest"})
-    loginIsThere = find_element(:id, "testText")
-    testEnd = inner_text(loginIsThere)
-    Logger.debug testEnd
-    take_screenshot("LP016-Save-and-Continue-missing-email.png") 
-    end  
- test "LP017 Save and Continue - missing Company name" do
-    navigate_to("https://www.citelectronics.com/main/h/customerApplication.php")
-    fName = find_element(:id, "nameTest")
-    lName = find_element(:id, "lNameTest") 
-    phone = find_element(:id, "phoneTest")
-    whatsApp = find_element(:id, "whatsAppTest")
-    email = find_element(:id, "emailTest")
-    fill_field(fName, "testF")
-    fill_field(lName, "testL")
-    fill_field(phone, "8018018108")
-    fill_field(whatsApp, "8018018108")
-    fill_field(email, "testc@citelectronics.com")
-    click({:id, "savenameTest"})
-    loginIsThere = find_element(:id, "testText")
-    testEnd = inner_text(loginIsThere)
-    Logger.debug testEnd
-    take_screenshot("LP017-Save-and-Continue-missing-Company-name.png") 
-    end  
- test "LP018 Save and Continue - Missing phone number" do
-    navigate_to("https://www.citelectronics.com/main/h/customerApplication.php")
-    fName = find_element(:id, "nameTest")
-    lName = find_element(:id, "lNameTest") 
-    company = find_element(:id, "companyTest")
-    whatsApp = find_element(:id, "whatsAppTest")
-    email = find_element(:id, "emailTest")
-    fill_field(fName, "testF")
-    fill_field(lName, "testL")
-    fill_field(company, "testC")
-    fill_field(whatsApp, "8018018108")
-    fill_field(email, "testc@citelectronics.com")
-    click({:id, "savenameTest"})
-    loginIsThere = find_element(:id, "testText")
-    testEnd = inner_text(loginIsThere)
-    Logger.debug testEnd
-    take_screenshot("LP018-Save-and-Continue-Missing-phone-number.png") 
-    end  
+   ### ===VARIABLES=== ###
+   @loginPage "https://www.citelectronics.com/login.php"
+   @myCartPage "https://www.citelectronics.com/welcome.php?p=0&s=0"
+   @dashboardPage "https://www.citelectronics.com/welcome.php?p=1&s=0"
+   @cPortal_email "testc@citelectronics.com"
+   @cPortal_password "techteam"
 
+   ### ===EXECUTE TEST=== ###
+   test "EXECUTE TEST" do
+      set_window_size current_window_handle(), 1200, 1850 # RESIZES WINDOW
+      cPortal_login() # LOGIN
+      cPortal_myCart() # MY CART
+      navigate_to(@dashboardPage) # DASHBOARD PAGE
+      cPortal_inventory() # INVENTORY
+   end
 
-#  test "LP008 User Type check login - 9" do
-#   navigate_to "https://www.citelectronics.com/welcome.php?p=0&s=0"
-#    email = find_element(:id, "emailTest")
-#    password = find_element(:id, "passwordTest")
-#    fill_field(email, "antiano@citelectronics.com")
-#    fill_field(password, 957141)
-#    click({:id, "login_button"})
-#    take_screenshot("LP008.png") 
-#  end
-#    test "Sign-up No Password" do
-#    navigate_to "https://www.citelectronics.com/welcome.php?p=0&s=0"
-#    email = find_element(:id, "emailTest")
-#    password = find_element(:id, "passwordTest")
-#    fill_field(email, "antiano@citelectronics.com")
-#    fill_field(password, 957141)
-#    click({:id, "login_button"})
-#    cart = find_element(:id, "testCart")
-#    click(cart)
-#    cartIsThere = find_element(:id, "deviceTest")
-#    testEnd = inner_text(cartIsThere)
-#    Logger.debug testEnd
-#     # Set elements to Variables
-#     # signUpBTN = find_element(:id, "u_0_14")
-#     # fName = find_element(:id, "u_0_n")
-#     # lName = find_element(:id, "u_0_p")
-#     # email = find_element(:id, "u_0_s")
-#     # rEmail = find_element(:id, "u_0_v")
-#     # gender = find_element(:id, "u_0_6")
-#     #  # Sign up with no password
-#     # fill_field(fName, "John")
-#     # fill_field(lName, "Smith")
-#     # fill_field(email, "johnsmith@gmail.com")
-#     # fill_field(rEmail, "johnsmith@gmail.com")
-#     # click(gender)
-#     # click(signUpBTN)
-#      take_screenshot("Cart.png")
-   
-#    end
+   ###########################
+   ### ===CPORTAL LOGIN=== ###
+   ###########################
 
-  
-  # test "Sign-up Invalid Email" do
-  # navigate_to "https://en-gb.facebook.com/r.php?locale=en_GB&display=page"
-  #   # Set elements to Variables
-  #  signUpBTN = find_element(:id, "u_0_14")
-  #   fName = find_element(:id, "u_0_n")
-  #   lName = find_element(:id, "u_0_p")
-  #   email = find_element(:id, "u_0_s")
-  #   password = find_element(:id, "u_0_x")
-  #   gender = find_element(:id, "u_0_6")
+   ### ===LOGIN=== ###
+   def cPortal_login() do
+      navigate_to(@loginPage)
+      take_screenshot("CPLO0001-cPortal_login_page.png")
+      fill_field({:id, "emailTest"}, @cPortal_email)
+      fill_field({:id, "passwordTest"}, @cPortal_password)
+      click({:id, "login_button"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPLO0002-cPortal_dashboard.png")
+   end
 
-  #   # Sign up with invalid email
-  #   fill_field(fName, "John")
-  #   fill_field(lName, "Smith")
-  #   fill_field(email, "johnsmith.com")
-  #   fill_field(password, "Welcome1!")
-  #   click(gender)
-  #   click(signUpBTN)
-  #   take_screenshot("invalid email.png")
-   
-  # end
-  # test "Sign-up Invalid Phone" do
-  # navigate_to "https://en-gb.facebook.com/r.php?locale=en_GB&display=page"
-  #  # Set elements to Variables
-  #   signUpBTN = find_element(:id, "u_0_14")
-  #   fName = find_element(:id, "u_0_n")
-  #   lName = find_element(:id, "u_0_p")
-  #   email = find_element(:id, "u_0_s")
-  #   password = find_element(:id, "u_0_x")
-  #   gender = find_element(:id, "u_0_6")
+   #############################
+   ### ===CPORTAL MY CART=== ###
+   #############################
 
-  #    # Sign up with invalid phone
-  #    fill_field(fName, "John")
-  #    fill_field(lName, "Smith")
-  #    fill_field(email, "801801801")
-  #    click(gender)
-  #    click(signUpBTN)
-  #    take_screenshot("invalid Phone number.png")
-   
-  # end
+   ### ===MY CART=== ###
+   def cPortal_myCart() do
+      cPortal_myCart_navigate() # NAVIGATE TO MY CART PAGE
+      myCart_inventory_navigate() # NAVIGATE TO INVENTORY
+      myCart_inventory_viewInventoryList() # VIEW INVENTORY LIST
+      myCart_inventory_applyfilter() # APPLIES FILTER
+      myCart_inventory_addFavorites() # ADD TO FAVORITES
+      myCart_inventory_addProduct() # ADD PRODUCT
+      myCart_inventory_makeOffer() # MAKE OFFER
+      myCart_inventory_adjustProduct() # ADJUST PRODUCT
+      myCart_inventory_removeProduct() # REMOVE PRODUCT
+      myCart_inventory_removeFavorites() # REMOVE FAVORITES
+   end
+
+   ### ===NAVIGATE TO MY CART PAGE=== ###
+   def cPortal_myCart_navigate() do
+      click({:id, "testCart"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPMC0001-cPortal_myCart.png")
+   end
+
+   ### ===NAVIGATE TO INVENTORY=== ###
+   def myCart_inventory_navigate() do
+      click({:id, "view_inventory"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPMC0002-cPortal_myCart_inventory.png")
+   end
+
+   ### ===VIEW INVENTORY LIST=== ###
+   def myCart_inventory_viewInventoryList() do
+      click({:id, "btn_filter_search"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPMC0003-cPortal_myCart_inventory_viewInventoryList.png")
+   end
+
+   ### ===APPLIES FILTER=== ###
+   def myCart_inventory_applyfilter() do
+      click({:id, "priceDropdown"})
+      click({:id, "reset_p_q"})
+      fill_field({:id, "txtBox_qty_min"}, "2")
+      click({:id, "save_p_q"})
+      :timer.sleep(1000)
+      take_screenshot("CPMC0004-cPortal_myCart_inventory_applyFilter.png")
+   end
+
+   ### ===ADD TO FAVORITES=== ###
+   def myCart_inventory_addFavorites() do
+      click({:css, "#invTableContent .item_row:nth-child(1) .fav_td .favorite_item"})
+      :timer.sleep(250)
+      click({:css, "#invTableContent .item_row:nth-child(2) .fav_td .favorite_item"})
+      :timer.sleep(250)
+      click({:css, "#invTableContent .item_row:nth-child(3) .fav_td .favorite_item"})
+      :timer.sleep(250)
+      click({:css, "#invTableContent .item_row:nth-child(4) .fav_td .favorite_item"})
+      :timer.sleep(250)
+      click({:css, "#invTableContent .item_row:nth-child(5) .fav_td .favorite_item"})
+      take_screenshot("CPMC0005-cPortal_myCart_inventory_addFavorites.png")
+   end
+
+   ### ===ADD PRODUCT=== ###
+   def myCart_inventory_addProduct() do
+      click({:css, "#invTableContent .item_row:nth-child(1) .qty_td .add_all_btn"})
+      :timer.sleep(250)
+      click({:css, "#invTableContent .item_row:nth-child(2) .qty_td .add_all_btn"})
+      :timer.sleep(250)
+      click({:css, "#invTableContent .item_row:nth-child(3) .qty_td .add_all_btn"})
+      :timer.sleep(250)
+      click({:css, "#invTableContent .item_row:nth-child(4) .qty_td .add_all_btn"})
+      :timer.sleep(250)
+      click({:css, "#invTableContent .item_row:nth-child(5) .qty_td .add_all_btn"})
+      take_screenshot("CPMC0006-cPortal_myCart_inventory_addProduct.png")
+      navigate_to(@myCartPage)
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPMC0007-cPortal_myCart_inventory_addProduct_myCart.png")
+   end
+
+   ### ===MAKE OFFER=== ###
+   def myCart_inventory_makeOffer() do
+      click({:class, "make_offer"})
+      fill_field({:class, "offerInput"}, 1)
+      click({:class, "save_offer"})
+      take_screenshot("CPMC0008-cPortal_myCart_inventory_makeOffer_save.png")
+      click({:class, "edit_offer"})
+      click({:class, "remove_offer"})
+      take_screenshot("CPMC0009-cPortal_myCart_inventory_makeOffer_remove.png")
+   end
+
+   ### ===ADJUST PRODUCT=== ###
+   def myCart_inventory_adjustProduct() do
+      click({:class, "quantityInput"})
+      send_keys(:num1)
+      take_screenshot("CPMC0010-cPortal_myCart_inventory_adjustProduct_decrease.png")
+      click({:class, "quantityInput"})
+      send_keys(:num2)
+      take_screenshot("CPMC0011-cPortal_myCart_inventory_adjustProduct_increase.png")
+      click({:class, "quantityInput"})
+      send_keys(:num1)
+      click({:class, "takeAllButton"})
+      take_screenshot("CPMC0012-cPortal_myCart_inventory_adjustProduct_takeAll.png")
+   end
+
+   ### ===REMOVE PRODUCT=== ###
+   def myCart_inventory_removeProduct() do
+      click({:class, "removeAllButton"})
+      :timer.sleep(250)
+      click({:class, "removeAllButton"})
+      :timer.sleep(250)
+      click({:class, "removeAllButton"})
+      :timer.sleep(250)
+      click({:class, "removeAllButton"})
+      :timer.sleep(250)
+      click({:class, "removeAllButton"})
+      take_screenshot("CPMC0013-cPortal_myCart_inventory_removeProduct.png")
+   end
+
+   ### ===REMOVE FAVORITES=== ###
+   def myCart_inventory_removeFavorites() do
+      click({:class, "iHeartClick"})
+      :timer.sleep(250)
+      click({:class, "iHeartClick"})
+      :timer.sleep(250)
+      click({:class, "iHeartClick"})
+      :timer.sleep(250)
+      click({:class, "iHeartClick"})
+      :timer.sleep(250)
+      click({:class, "iHeartClick"})
+      take_screenshot("CPMC0014-cPortal_myCart_inventory_removeFavorites.png")
+   end
+
+   ###############################
+   ### ===CPORTAL INVENTORY=== ###
+   ###############################
+
+   ### ===MY CART=== ###
+   def cPortal_inventory() do
+      cPortal_inventory_navigate() # NAVIGATE TO INVENTORY PAGE
+   end
+
+   ### ===NAVIGATE TO INVENTORY PAGE=== ###
+   def cPortal_inventory_navigate() do
+      click({:id, "testInventory"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPIN0001-cPortal_inventory.png")
+   end
+
+   ####################
+   ### ===OTHER=== ####
+   ####################
+
+   ### ===WAT UNTIL PAGE IS LOADED=== ###
+   def wait() do
+      case execute_script("return document.readyState") do
+         "loading" ->  wait() # WAIT UNTIL PAGE IS LOADED
+         _ -> true
+      end
+  end
 end
