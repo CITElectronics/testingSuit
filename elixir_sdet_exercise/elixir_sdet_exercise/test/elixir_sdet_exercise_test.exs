@@ -53,6 +53,8 @@ test "custom login and signup" do
   # lP031_Create_account_all_caps()
   # lP032_Create_account_all_lowercase()
   # lP033_Create_account_policy()
+  # lP034_Create_account_policy_accept()
+  # lP035_Create_account_policy_decline()
 end
 
  def lP001_Create_an_account_button() do
@@ -822,6 +824,76 @@ end
     wait()
     click({:class, "modal_accordion_header"})
     take_screenshot("LP033-Create_account_policy.png") 
+    end  
+ def lP034_Create_account_policy_accept() do
+    navigate_to(@uRLCA)
+    wait()
+    fName = find_element(:id, "nameTest")
+    lName = find_element(:id, "lNameTest") 
+    company = find_element(:id, "companyTest")
+    phone = find_element(:id, "phoneTest")
+    whatsApp = find_element(:id, "whatsAppTest")
+    email = find_element(:id, "emailTest")
+    fill_field(fName, "testF")
+    fill_field(lName, "testL")
+    fill_field(company, "testC")
+    fill_field(whatsApp, "801801808")
+    fill_field(phone, "8801801808")
+    fill_field(email, @cEmail)
+    click({:id, "savenameTest"})
+    where = find_element(:id, "select_country")
+    click(where)
+    send_text "a"
+    send_keys(:enter)
+    how = find_element(:id, "select_lead")
+    click(how)
+    send_text "a"
+    send_keys(:enter)
+    on = find_element(:id, "select_budget")
+    click(on)
+    send_text "$"
+    send_keys(:enter)
+    click({:id, "bus_info"})
+    wait()
+    click({:id, "link_terms"})
+    wait()
+    click({:id, "modal_accept_button"})
+    take_screenshot("LP034-Create_account_policy_accept.png") 
+    end  
+ def lP035_Create_account_policy_decline() do
+    navigate_to(@uRLCA)
+    wait()
+    fName = find_element(:id, "nameTest")
+    lName = find_element(:id, "lNameTest") 
+    company = find_element(:id, "companyTest")
+    phone = find_element(:id, "phoneTest")
+    whatsApp = find_element(:id, "whatsAppTest")
+    email = find_element(:id, "emailTest")
+    fill_field(fName, "testF")
+    fill_field(lName, "testL")
+    fill_field(company, "testC")
+    fill_field(whatsApp, "801801808")
+    fill_field(phone, "8801801808")
+    fill_field(email, @cEmail)
+    click({:id, "savenameTest"})
+    where = find_element(:id, "select_country")
+    click(where)
+    send_text "a"
+    send_keys(:enter)
+    how = find_element(:id, "select_lead")
+    click(how)
+    send_text "a"
+    send_keys(:enter)
+    on = find_element(:id, "select_budget")
+    click(on)
+    send_text "$"
+    send_keys(:enter)
+    click({:id, "bus_info"})
+    wait()
+    click({:id, "link_terms"})
+    wait()
+    click({:id, "modal_decline_button"})
+    take_screenshot("LP035-Create_account_policy_decline.png") 
     end  
 ###########################################################################################################################################################################################################
    ###################################
