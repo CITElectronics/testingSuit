@@ -57,8 +57,8 @@ defmodule ElixirSdetExerciseTest do
     # lP031_Create_account_all_caps()
     # lP032_Create_account_all_lowercase()
     # lP033_Create_account_policy()
-    lP034_Create_account_policy_accept()
-    lP035_Create_account_policy_decline()
+    # lP034_Create_account_policy_accept()
+    # lP035_Create_account_policy_decline()
   end
 
   def lP001_Create_an_account_button() do
@@ -900,7 +900,7 @@ defmodule ElixirSdetExerciseTest do
     click({:id, "modal_decline_button"})
     take_screenshot("LP035-Create_account_policy_decline.png") 
     end 
-    
+
 ################################################################################################################################################################################################################# 
 ######################################################################################CUSTOMER PORTAL TESTS######################################################################################################
    ###################################
