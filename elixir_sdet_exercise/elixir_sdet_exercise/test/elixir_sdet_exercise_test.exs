@@ -25,7 +25,7 @@ defmodule ElixirSdetExerciseTest do
   @urLO "https://www.citelectronics.com/logout.php"
   @uRLCA "https://www.citelectronics.com/main/h/customerApplication.php"
 
-  test "custom login and signup" do
+  # test "custom login and signup" do
     # lP001_Create_an_account_button()
     # lP002_Forgot_Your_Password_button()
     # lP003_Log_in_button()
@@ -59,7 +59,7 @@ defmodule ElixirSdetExerciseTest do
     # lP033_Create_account_policy()
     # lP034_Create_account_policy_accept()
     # lP035_Create_account_policy_decline()
-  end
+  # end
 
   def lP001_Create_an_account_button() do
     navigate_to(@uRLL) 
@@ -1100,4 +1100,430 @@ defmodule ElixirSdetExerciseTest do
   end
    #  delete_cookies()
   # refresh_page()
-end
+
+#################################################################################################################################################################################################################
+############################################################################################Home Page############################################################################################################
+#################################################################################################################################################################################################################
+
+  @uRLH  "https://www.citelectronics.com"
+
+    test "Home Page" do
+      # hP001_Check_Site_Load()
+      # hP002_Nav_Spanish_Dropdown_Load()
+      # hP003_Nav_English_Dropdown_Load()
+      hP004_Nav_Login_Load()
+    end
+
+    def hP001_Check_Site_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP001-Check-Site-Load.png") 
+    end
+    def hP002_Nav_Spanish_Dropdown_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "navDrop"})
+      click({:id, "navSpanish"})
+      take_screenshot("HP002-Nav-Spanish-Dropdown-Load.png") 
+    end
+    def hP003_Nav_English_Dropdown_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "navDrop"})
+      click({:id, "navEnglish"})
+      take_screenshot("HP002-Nav-English-Dropdown-Load.png") 
+    end
+    def hP004_Nav_Login_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP004-Nav-Login-Load.png") 
+    def hP005_Nav_Home_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP005-Nav Home Load.png") 
+    end
+    def hP006_Nav_Wholesale_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP006-Nav-Wholesale-Load.png") 
+    end
+    def hP007_Nav_Wholesale_Dropdown_Purchasing_Proccess_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP007-Nav-Wholesale-Dropdown-Purchasing-Proccess-Load.png") 
+    end
+    def hP008_Nav_Wholesale_Dropdown_Quality_Guide_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP008-Nav-Wholesale-Dropdown-Quality-Guide-Load.png") 
+    end
+    def hP009_Nav_Wholesale_Dropdown_FAQ_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP009-Nav-Wholesale-Dropdown-FAQ-Load.png") 
+    end
+    def hP010_Nav_Wholesale_Dropdown_Inventory_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("hP010_Nav-Nav-Wholesale-Dropdown-Inventory-Load.png") 
+    end
+    def hP011_Nav_Retail_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP011-Nav-Retail-Load.png") 
+    end
+    def hP012_Nav_About_Us_Load() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP012-Nav-About-Us-Load.png") 
+    end
+    def hP013_Shop_for_button() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP013-Shop-for-button.png") 
+    end
+    def hP014_Become_a_Button() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP014-Become-a-Button.png") 
+    end
+    def hP015_Retail_learn_more_button() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP015-Retail-learn-more-button.png") 
+    end
+    def hP016_Wholesale_Learn_more_button() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP016-Wholesale-Learn-more-button.png") 
+    end
+    def hP017_Footer_Create_an_Account() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP017-Footer-Create-an-Account.png") 
+    end
+    def hP018_Footer_My_Account() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP018-Footer-My-Account.png") 
+    end
+    def hP019_Footer_FAQ() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP019-Footer-FAQ.png") 
+    end
+    def hP020_Footer_Quality_Guide() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP020-Footer-Quality-Guide.png") 
+    end
+    def hP021_Footer_Purchasing_Process() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP021-Footer-Purchasing-Process.png") 
+    end
+    def hP022_Footer_Inventory() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP022-Footer-Inventory.png") 
+    end
+    def hP023_Footer_Careers() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP023-Footer-Careers.png") 
+    end
+    def hP024_Footer_Abount_US() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP024-Footer-Abount-US.png") 
+    end
+    def hP025_Back_To_top() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP025-Back-To-top.png") 
+    end
+    def hP026_Hamburger_dropdown() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP026-Hamburger-dropdown.png") 
+    end
+    def hP027_Hamburger_English_dropdown() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "login_li"})
+      take_screenshot("HP027-Hamburger-English-dropdown.png") 
+    end
+    def hP028_Hamburger_English() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP028-Hamburger-English.png") 
+    end
+    def hP029_Hamburger_Spanish() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP029-Hamburger-Spanish.png") 
+    end
+    def hP030_Hamburger_Login() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP030-Hamburger-Login.png") 
+    end
+    def hP031_Hamburger_Wholesale_dropdown() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP031-Hamburger-Wholesale-dropdown.png") 
+    end
+    def hP032_Hamburger_Purchasing_Process() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP032-Hamburger-Purchasing-Process.png") 
+    end
+    def hP033_Hamburger_Quality_Guide() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP033-Hamburger-Quality-Guide.png") 
+    end
+    def hP034_Hamburger_FAQ() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP034-Hamburger-FAQ.png") 
+    end
+    def hP035_Hamburger_Inventory() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP035-Hamburger-Inventory.png") 
+    end
+    def hP036_Hamburger_Retail() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP036-Hamburger-Retail.png") 
+    end
+    def hP037_Hamburger_About_UD() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP037-Hamburger-About-UD.png") 
+    end
+    def hP038_Sign_in_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP038-Sign-in-button.png") 
+    end
+    def hP039_Create_a_free_account_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP039-Create-a-free-account-button.png") 
+    end
+    def hP040_Learn_more_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP040-Learn-more-button.png") 
+    end
+    def hP041_Create_an_Account_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP041-Create-an-Account-button.png") 
+    end
+    def hP042_Send_Message_Test_Without_name() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP042-Send-Message-Test-Without-name.png") 
+    end
+    def hP043_Send_Message_Test_Without_email() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP043Send-Message-Test-Without-email.png") 
+    end
+    def hP044_Send_Message_Test_Without_valid_email() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP044-Send-Message-Test-Without-valid-email.png") 
+    end
+    def hP045_Send_Message_Test_Without_message() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP045-Send-Message-Test-Without-message.png") 
+    end
+    def hP046_How_to_Purchase() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP046-How-to-Purchase.png") 
+    end
+    def hP047_Getting_Started() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP047-Getting-Started.png") 
+    end
+    def hP048_Create_An_Account() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP048-Create-An-Account.png") 
+    end
+    def hP049_number_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP049-1(385)-519-4842-button.png") 
+    end
+    def hP050_Data_erased_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP050-Data-erased-button.png") 
+    end
+    def hP051_Batteries_and_covers_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP051-Batteries-and-covers-button.png") 
+    end
+    def hP052_ESN_or_IMEI_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP052-ESN-or-IMEI-button.png") 
+    end
+    def hP053_Locked_to_Carrier_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP053-Locked-to-Carrier-button.png") 
+    end
+    def hP054_Photots_not_available_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP054-Photots-not-available-button.png") 
+    end
+    def hP055_Accessories_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP055-Accessories-button.png") 
+    end
+    def hP056_B_Stock_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP056-B-Stock-button.png") 
+    end
+    def hP057_A_Stock_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP057-A-Stock-button.png") 
+    end
+    def hP058_C_Stock_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP058-C-Stock-button.png") 
+    end
+    def hP059_D_Stock_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP059-D-Stock-button.png") 
+    end
+    def hP060_E_Stock_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP060-E-Stock-button.png") 
+    end
+    def hP061_Cracked_Stock_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP061-Cracked-Stock-button.png") 
+    end
+    def hP062_Download_PDF_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP062-Download-PDF-button.png") 
+    end
+    def hP063_It_there_a_minimum_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP063-It-there-a-minimum-button.png") 
+    end
+    def hP064_Are_all_of_the_prices_final_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP064-Are-all-of-the-prices-final-button.png") 
+    end
+    def hP065_Can_I_buy_one_device_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP065-Can-I-buy-one-device-button.png") 
+    end
+    def hP066_What_is_the_return_policy_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP066-What-is-the-return-policy-button.png") 
+    end
+    def hP067_Do_I_have_to_order_through_Button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP067-Do-I-have-to-order-through-Button.png") 
+    end
+    def hP068_Who_can_I_talk_to_about_placing_an_order_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP068-Who-can-I-talk-to-about-placing-an-order-button.png") 
+    end
+    def hP069_Create_an_account_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP069-Create-an-account-button.png") 
+    end
+    def hP070_What_form_of_paymnet_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP070-What-form-of-paymnet-button.png") 
+    end
+    def hP071_Will_I_receive_an_invoice_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP071-Will-I-receive-an-invoice-button.png") 
+    end
+    def hP072_When_am_I_expected_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP072-When-am-I-expected-button.png") 
+    end
+    def hP073_Does_CIT_Electronics_ship_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP073-Does-CIT-Electronics-ship-button.png") 
+    end
+    def hP074_Who_is_responsible_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP074-Who-is-responsible-button.png") 
+    end
+    def hP075_When_will_my_order_be_ship_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP075-When-will-my-order-be-ship-button.png") 
+    end
+    def hP076_Shop_now_purpletech_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP076-Shop-now-purpletech-button.png") 
+    end
+    def hP077_Shop_now_Sellingtech_button() do
+      navigate_to(@uRLH) 
+      wait()
+      take_screenshot("HP077-Shop-now-Sellingtech-button.png") 
+    end
+  end
