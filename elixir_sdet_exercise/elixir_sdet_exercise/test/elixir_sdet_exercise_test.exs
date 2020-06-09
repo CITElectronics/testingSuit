@@ -6,36 +6,9 @@ defmodule ElixirSdetExerciseTest do
    # Start hound session and destroy when tests are run
    hound_session()
 
-#################################################################################################################################################################################################################
-######################################################################################Login In/ Sing Up Tests####################################################################################################
-
-
-<<<<<<< HEAD
-# test "custom login and signup" do
-#   lP001_Create_an_account_button()
-#   lP002_Forgot_Your_Password_button()
-#   lP003_Log_in_button()
-#   lP004_User_Type_check_login_5()
-#   lP005_User_Type_check_login_6()
-#   lP006_User_Type_check_login_7()
-#   lP008_User_Type_check_login_9()
-#   lP010_User_Type_check_login_11()
-#   lP011_User_Type_check_login_12()
-#   lP012_User_Type_check_login_13()
-#   lP013_User_Type_check_login_14()
-#   lP014_Save_and_Continue_All_filled_out()
-#   lP015_Save_and_Continue_None_filled_out()
-#   lP016_Save_and_Continue_missing_email()
-#   lP017_Save_and_Continue_missing_Company_name()
-#   lP018_Save_and_Continue_Missing_phone_number()
-#   lP019_Save_and_Continue_Phone_length_above_10_characters()
-#   lP020_Save_and_Continue_All_selected()
-#   lP021_Save_and_Continue_none_selected()
-#   lP022_Save_and_Continue_All_selected_but_locations()
-#   lP023_Save_and_Continue_All_selected_but_where_they_found_us()
-#   lP024_Save_and_Continue_All_selected_but_spending()
-# end
-=======
+########################################################################################################################################################################################################
+##########################################################################################LOGIN/SIGN UP TESTS###########################################################################################
+########################################################################################################################################################################################################
   @cEmail "testc@citelectronics.com" ##customer
   @sEmail "tests@citelectronics.com" ##sales
   @saEmail "testsa@citelectronics.com" ##sales admin
@@ -45,7 +18,6 @@ defmodule ElixirSdetExerciseTest do
   @tnEmail "testtn@citelectronics.com" ##techdepotnwsadmin
   @tfEmail "testtf@citelectronics.com" ##techdepotfull
   @dEmail "testd@citelectronics.com" ##dev
->>>>>>> 43d10511d6648515428347388c33963fa26bd2f1
 
   #  password techteam
   @uRLL  "https://www.citelectronics.com/login.php"
@@ -928,11 +900,9 @@ defmodule ElixirSdetExerciseTest do
     take_screenshot("LP035-Create_account_policy_decline.png") 
     end 
 
-################################################################################################################################################################################################################# 
-######################################################################################CUSTOMER PORTAL TESTS######################################################################################################
-   ###################################
-   ### ===CUSTOMER PORTAL TESTS=== ###
-   ###################################
+########################################################################################################################################################################################################
+##########################################################################################CUSTOMER PORTAL TESTS#########################################################################################
+########################################################################################################################################################################################################
 
    ### ===VARIABLES=== ###
    @loginPage "https://www.citelectronics.com/login.php"
@@ -943,7 +913,6 @@ defmodule ElixirSdetExerciseTest do
    @cPortal_password "techteam"
 
    ### ===EXECUTE TEST=== ###
-<<<<<<< HEAD
    test "EXECUTE TEST" do
       Logger.debug "EXECUTE TEST START"
       set_window_size current_window_handle(), 1200, 1850 # RESIZES WINDOW
@@ -953,15 +922,6 @@ defmodule ElixirSdetExerciseTest do
       cPortal_inventory() # INVENTORY
       Logger.debug "EXECUTE TEST END"
    end
-=======
-  #  test "EXECUTE TEST" do
-  #     set_window_size current_window_handle(), 1200, 1850 # RESIZES WINDOW
-  #     cPortal_login() # LOGIN
-  #     cPortal_myCart() # MY CART
-  #     navigate_to(@dashboardPage) # DASHBOARD PAGE
-  #     cPortal_inventory() # INVENTORY
-  #  end
->>>>>>> 43d10511d6648515428347388c33963fa26bd2f1
 
    ###########################
    ### ===CPORTAL LOGIN=== ###
