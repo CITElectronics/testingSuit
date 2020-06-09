@@ -668,7 +668,7 @@ defmodule ElixirSdetExerciseTest do
       send_keys(:enter)
       click({:id, "bus_info"})
       wait()
-        createPass = find_element(:id, "createPassTest")
+      createPass = find_element(:id, "createPassTest")
       fill_field(createPass, "Welcome1")
       click({:id, "checkbox_terms"})
       click({:id, "button_submitApplication"})
@@ -898,28 +898,32 @@ defmodule ElixirSdetExerciseTest do
     wait()
     click({:id, "modal_decline_button"})
     take_screenshot("LP035-Create_account_policy_decline.png") 
-    end 
+   end 
 
 ########################################################################################################################################################################################################
 ##########################################################################################CUSTOMER PORTAL TESTS#########################################################################################
 ########################################################################################################################################################################################################
 
    ### ===VARIABLES=== ###
-   @loginPage "https://www.citelectronics.com/login.php"
-   @myCartPage "https://www.citelectronics.com/welcome.php?p=0&s=0"
-   @dashboardPage "https://www.citelectronics.com/welcome.php?p=1&s=0"
-   @inventoryPage "https://www.citelectronics.com/welcome.php?p=0&s=2"
-   @cPortal_email "testc@citelectronics.com"
-   @cPortal_password "techteam"
+   @tag timeout: :infinity # SETS TIMEOUT TO INFINITY
+   @homePage "https://www.citelectronics.com/" # HOME PAGE
+   @loginPage "https://www.citelectronics.com/login.php" # LOGIN PAGE
+   @myCartPage "https://www.citelectronics.com/welcome.php?p=0&s=0" # MY CART PAGE
+   @dashboardPage "https://www.citelectronics.com/welcome.php?p=1&s=0" # DASHBOARD PAGE
+   @inventoryPage "https://www.citelectronics.com/welcome.php?p=0&s=2" # INVENTORY PAGE
+   @cPortal_email "testc@citelectronics.com" # CPORTAL EMAIL
+   @cPortal_password "techteam" # CPORTAL PASSWORD
 
    ### ===EXECUTE TEST=== ###
    test "EXECUTE TEST" do
       Logger.debug "EXECUTE TEST START"
-      set_window_size current_window_handle(), 1200, 1850 # RESIZES WINDOW
-      cPortal_login() # LOGIN
-      # cPortal_myCart() # MY CART
-      # navigate_to(@dashboardPage) # DASHBOARD PAGE
-      cPortal_inventory() # INVENTORY
+      set_window_size current_window_handle(), 1920, 1250 # RESIZES WINDOW
+      # navigate_to(@homePage)
+      # set_cookie(%{name: "language", value: "1"})
+      cPortal_login() # LOGIN TESTS
+      cPortal_myCart() # MY CART TESTS
+      navigate_to(@dashboardPage)
+      cPortal_inventory() # INVENTORY TESTS
       Logger.debug "EXECUTE TEST END"
    end
 
@@ -927,11 +931,12 @@ defmodule ElixirSdetExerciseTest do
    ### ===CPORTAL LOGIN=== ###
    ###########################
 
-   ### ===LOGIN=== ###
+   ### ===LOGIN TESTS=== ###
    def cPortal_login() do
       navigate_to(@loginPage)
       take_screenshot("CPLO0001-login.png")
       Logger.debug "CPLO0001 Complete"
+      
       fill_field({:id, "emailTest"}, @cPortal_email)
       fill_field({:id, "passwordTest"}, @cPortal_password)
       click({:id, "login_button"})
@@ -944,7 +949,7 @@ defmodule ElixirSdetExerciseTest do
    ### ===CPORTAL MY CART=== ###
    #############################
 
-   ### ===MY CART=== ###
+   ### ===MY CART TESTS=== ###
    def cPortal_myCart() do
       cPortal_myCart_navigate() # NAVIGATE TO MY CART PAGE
       myCart_inventory_navigate() # NAVIGATE TO INVENTORY
@@ -954,8 +959,15 @@ defmodule ElixirSdetExerciseTest do
       myCart_inventory_addProduct() # ADD PRODUCT
       myCart_makeOffer() # MAKE OFFER
       myCart_adjustProduct() # ADJUST PRODUCT
+      myCart_sortList() # SORT MY FAVORITES LIST
       myCart_removeProduct() # REMOVE PRODUCT
       myCart_removeFavorites() # REMOVE FAVORITES
+      myCart_inventory_navigate() # NAVIGATE TO INVENTORY
+      myCart_inventory_viewInventoryList() # VIEW INVENTORY LIST
+      myCart_inventory_applyfilter() # APPLIES FILTER
+      myCart_inventory_addProduct() # ADD PRODUCT
+      myCart_submitOrder() # SUBMIT ORDER
+      myCart_viewPendingOrder() # VIEW PENDING ORDER
    end
 
    ### ===NAVIGATE TO MY CART PAGE=== ###
@@ -986,9 +998,10 @@ defmodule ElixirSdetExerciseTest do
    def myCart_inventory_applyfilter() do
       click({:id, "priceDropdown"})
       click({:id, "reset_p_q"})
+      fill_field({:id, "txtBox_price_min"}, "50")
       fill_field({:id, "txtBox_qty_min"}, "2")
       click({:id, "save_p_q"})
-      :timer.sleep(1000)
+      :timer.sleep(1000) # SLEEP 1 SECOND
       take_screenshot("CPMC0004-inventory_applyFilter.png")
       Logger.debug "CPMC0004 Complete"
    end
@@ -996,13 +1009,13 @@ defmodule ElixirSdetExerciseTest do
    ### ===ADD TO FAVORITES=== ###
    def myCart_inventory_addFavorites() do
       click({:css, "#invTableContent .item_row:nth-child(1) .fav_td .favorite_item"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:css, "#invTableContent .item_row:nth-child(2) .fav_td .favorite_item"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:css, "#invTableContent .item_row:nth-child(3) .fav_td .favorite_item"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:css, "#invTableContent .item_row:nth-child(4) .fav_td .favorite_item"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:css, "#invTableContent .item_row:nth-child(5) .fav_td .favorite_item"})
       take_screenshot("CPMC0005-inventory_addFavorites.png")
       Logger.debug "CPMC0005 Complete"
@@ -1011,16 +1024,17 @@ defmodule ElixirSdetExerciseTest do
    ### ===ADD PRODUCT=== ###
    def myCart_inventory_addProduct() do
       click({:css, "#invTableContent .item_row:nth-child(1) .qty_td .add_all_btn"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:css, "#invTableContent .item_row:nth-child(2) .qty_td .add_all_btn"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:css, "#invTableContent .item_row:nth-child(3) .qty_td .add_all_btn"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:css, "#invTableContent .item_row:nth-child(4) .qty_td .add_all_btn"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:css, "#invTableContent .item_row:nth-child(5) .qty_td .add_all_btn"})
       take_screenshot("CPMC0006-inventory_addProduct.png")
       Logger.debug "CPMC0006 Complete"
+
       navigate_to(@myCartPage)
       wait() # WAIT UNTIL PAGE IS LOADED
       take_screenshot("CPMC0007-inventory_addProduct_myCart.png")
@@ -1034,6 +1048,7 @@ defmodule ElixirSdetExerciseTest do
       click({:class, "save_offer"})
       take_screenshot("CPMC0008-makeOffer_save.png")
       Logger.debug "CPMC0008 Complete"
+
       click({:class, "edit_offer"})
       click({:class, "remove_offer"})
       take_screenshot("CPMC0009-makeOffer_remove.png")
@@ -1043,152 +1058,511 @@ defmodule ElixirSdetExerciseTest do
    ### ===ADJUST PRODUCT=== ###
    def myCart_adjustProduct() do
       click({:class, "quantityInput"})
-      send_keys(:num1)
+      send_keys(:num1) # TYPES 1
+      :timer.sleep(250) # SLEEP .25 SECONDS
       take_screenshot("CPMC0010-adjustProduct_decrease.png")
       Logger.debug "CPMC0010 Complete"
+
       click({:class, "quantityInput"})
-      send_keys(:num2)
+      send_keys(:num2) # TYPES 2
+      :timer.sleep(250) # SLEEP .25 SECONDS
       take_screenshot("CPMC0011-adjustProduct_increase.png")
       Logger.debug "CPMC0011 Complete"
+
       click({:class, "quantityInput"})
-      send_keys(:num1)
+      send_keys(:num1) # TYPES 1
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "takeAllButton"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
       take_screenshot("CPMC0012-adjustProduct_takeAll.png")
       Logger.debug "CPMC0012 Complete"
+   end
+
+   ### ===SORT MY FAVORITES LIST=== ###
+   def myCart_sortList() do
+      click({:id, "dropdownMenu1"})
+      click({:css, "#favoriteDropdown_Sort li:nth-child(2) a"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      take_screenshot("CPMC0013-sortList_nameAZ.png")
+      Logger.debug "CPMC0013 Complete"
+
+      click({:id, "dropdownMenu1"})
+      click({:css, "#favoriteDropdown_Sort li:nth-child(3) a"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      take_screenshot("CPMC0014-sortList_nameZA.png")
+      Logger.debug "CPMC0014 Complete"
+
+      click({:id, "dropdownMenu1"})
+      click({:css, "#favoriteDropdown_Sort li:nth-child(6) a"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      take_screenshot("CPMC0015-sortList_priceLH.png")
+      Logger.debug "CPMC0015 Complete"
+
+      click({:id, "dropdownMenu1"})
+      click({:css, "#favoriteDropdown_Sort li:nth-child(7) a"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      take_screenshot("CPMC0016-sortList_priceHL.png")
+      Logger.debug "CPMC0016 Complete"
+
+      click({:id, "dropdownMenu1"})
+      click({:css, "#favoriteDropdown_Sort li:nth-child(10) a"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      take_screenshot("CPMC0017-sortList_quantityLH.png")
+      Logger.debug "CPMC0017 Complete"
+
+      click({:id, "dropdownMenu1"})
+      click({:css, "#favoriteDropdown_Sort li:nth-child(11) a"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      take_screenshot("CPMC0018-sortList_quantityHL.png")
+      Logger.debug "CPMC0018 Complete"
    end
 
    ### ===REMOVE PRODUCT=== ###
    def myCart_removeProduct() do
       click({:class, "removeAllButton"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "removeAllButton"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "removeAllButton"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "removeAllButton"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "removeAllButton"})
-      take_screenshot("CPMC0013-removeProduct.png")
-      Logger.debug "CPMC0013 Complete"
+      take_screenshot("CPMC0019-removeProduct.png")
+      Logger.debug "CPMC0019 Complete"
    end
 
    ### ===REMOVE FAVORITES=== ###
    def myCart_removeFavorites() do
       click({:class, "iHeartClick"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "iHeartClick"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "iHeartClick"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "iHeartClick"})
-      :timer.sleep(250)
+      :timer.sleep(250) # SLEEP .25 SECONDS
       click({:class, "iHeartClick"})
-      take_screenshot("CPMC0014-removeFavorites.png")
-      Logger.debug "CPMC0014 Complete"
+      take_screenshot("CPMC0020-removeFavorites.png")
+      Logger.debug "CPMC0020 Complete"
+   end
+
+   ### ===SUBMIT ORDER=== ###
+   def myCart_submitOrder() do
+      click({:class, "panel-heading"})
+      click({:class, "panel-heading"})
+      click({:id, "div_Container_cartOverview_submit"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPMC0021-submitOrder_submitOrderRequest.png")
+      Logger.debug "CPMC0021 Complete"
+
+      click({:id, "selectShippingAddress"})
+      click({:css, "#selectShippingAddress option:nth-child(2)"})
+      take_screenshot("CPMC0022-submitOrder_selectAddress.png")
+      Logger.debug "CPMC0022 Complete"
+
+      click({:id, "selectShippingAddress"})
+      click({:css, "#selectShippingAddress option:nth-child(1)"})
+      take_screenshot("CPMC0023-submitOrder_selectAddress_default.png")
+      Logger.debug "CPMC0023 Complete"
+
+      click({:id, "selectShippingMethood"})
+      click({:css, "#selectShippingMethood option:nth-child(23)"})
+      take_screenshot("CPMC0024-submitOrder_shippingMethod.png")
+      Logger.debug "CPMC0024 Complete"
+
+      click({:id, "inputCheckShippingAddress"})
+      take_screenshot("CPMC0025-submitOrder_confirmAddress.png")
+      Logger.debug "CPMC0025 Complete"
+
+      click({:id, "divCollapseTwoHeading"})
+      take_screenshot("CPMC0026-submitOrder_paymentInformation.png")
+      Logger.debug "CPMC0026 Complete"
+
+      click({:id, "selectPaymentMethood"})
+      click({:css, "#selectPaymentMethood option:nth-child(2)"})
+      take_screenshot("CPMC0027-submitOrder_changeWire.png")
+      Logger.debug "CPMC0027 Complete"
+
+      click({:id, "selectPaymentMethood"})
+      click({:css, "#selectPaymentMethood option:nth-child(2)"})
+      take_screenshot("CPMC0028-submitOrder_changePayPal.png")
+      Logger.debug "CPMC0028 Complete"
+
+      click({:id, "inputCheckPayment"})
+      take_screenshot("CPMC0029-submitOrder_acceptPolicy.png")
+      Logger.debug "CPMC0029 Complete"
+
+      click({:id, "inputCheckPayment_Remember"})
+      take_screenshot("CPMC0030-submitOrder_unsavePayment.png")
+      Logger.debug "CPMC0030 Complete"
+
+      click({:id, "btnPaymentContinue"})
+      take_screenshot("CPMC0031-submitOrder_paymentInformationContinue.png")
+      Logger.debug "CPMC0031 Complete"
+
+      click({:id, "inputCheckSalesFollowup"})
+      take_screenshot("CPMC0032-submitOrder_checkSalesFollowup.png")
+      Logger.debug "CPMC0032 Complete"
+
+      fill_field({:id, "textAreaComment"}, "This is a test.")
+      take_screenshot("CPMC0033-submitOrder_addComment.png")
+      Logger.debug "CPMC0033 Complete"
+
+      click({:id, "inputCheckSalesFollowup"})
+      take_screenshot("CPMC0034-submitOrder_uncheckSalesFollowup.png")
+      Logger.debug "CPMC0034 Complete"
+
+      click({:class, "btn-Step2Return"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      take_screenshot("CPMC0035-submitOrder_changeOrder.png")
+      Logger.debug "CPMC0035 Complete"
+
+      click({:id, "div_Container_cartOverview_submit"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPMC0036-submitOrder_submitOrderRequest_final.png")
+      Logger.debug "CPMC0036 Complete"
+
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      click({:id, "inputCheckShippingAddress"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      click({:id, "inputCheckPayment"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      click({:id, "inputCheckPayment_Remember"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      click({:id, "btnPaymentContinue"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      click({:id, "btnSubmitOrder"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPMC0037-submitOrder_sendSales.png")
+      Logger.debug "CPMC0037 Complete"
+   end
+
+   ### ===VIEW PENDING ORDER=== ###
+   def myCart_viewPendingOrder() do
+      click({:id, "viewPendingOrder"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPMC0038-viewPendingOrder.png")
+      Logger.debug "CPMC0038 Complete"
    end
 
    ###############################
    ### ===CPORTAL INVENTORY=== ###
    ###############################
 
-   ### ===MY CART=== ###
+   ### ===INVENTORY TESTS=== ###
    def cPortal_inventory() do
-      cPortal_inventory_navigate() # NAVIGATE TO INVENTORY PAGE
-      cPortal_inventory_searchInventory() # SEARCH INVENTORY
+      inventory_navigate() # NAVIGATE TO INVENTORY PAGE
+      inventory_straightToInventory() # GO STRAIGHT TO INVENTORY
       navigate_to(@inventoryPage)
-      cPortal_inventory_searchInventoryButton() # SEARCH INVENTORY WITH BUTTON
+      inventory_searchInventoryEnter() # SEARCH INVENTORY
       navigate_to(@inventoryPage)
-      cPortal_inventory_filterSearch() # FILTER SEARCH
+      inventory_searchInventoryButton() # SEARCH INVENTORY WITH BUTTON
+      navigate_to(@inventoryPage)
+      inventory_filterSearch() # FILTER SEARCH
+      inventory_viewFavorites() # VIEW FAVORITES
+      inventory_viewPriceDrops() # VIEW PRICE DROPS
+      inventory_inventoryFeatures() # INVENTORY FEATURES
    end
 
    ### ===NAVIGATE TO INVENTORY PAGE=== ###
-   def cPortal_inventory_navigate() do
+   def inventory_navigate() do
       click({:id, "testInventory"})
       wait() # WAIT UNTIL PAGE IS LOADED
       take_screenshot("CPIN0001-inventory.png")
       Logger.debug "CPIN0001 Complete"
    end
 
-   ### ===SEARCH INVENTORY=== ###
-   def cPortal_inventory_searchInventory() do
-      fill_field({:id, "txtBox_search"}, "A1688")
-      send_keys(:enter)
+   ### ===GO STRAIGHT TO INVENTORY=== ###
+   def inventory_straightToInventory() do
+      click({:id, "inventoryLink"})
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPIN0002-searchInventory.png")
+      take_screenshot("CPIN0002-straightToInventory.png")
       Logger.debug "CPIN0002 Complete"
    end
 
-   ### ===SEARCH INVENTORY WITH BUTTON=== ###
-   def cPortal_inventory_searchInventoryButton() do
+   ### ===SEARCH INVENTORY=== ###
+   def inventory_searchInventoryEnter() do
       fill_field({:id, "txtBox_search"}, "A1688")
-      click({:id, "btn_search"})
+      send_keys(:enter) # TYPES ENTER
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPIN0003-searchInventoryButton.png")
+      take_screenshot("CPIN0003-searchInventory.png")
       Logger.debug "CPIN0003 Complete"
    end
 
-   ### ===FILTER SEARCH=== ###
-   def cPortal_inventory_filterSearch() do
-      click({:id, "more_options"})
-      take_screenshot("CPIN0004-filterSearch_moreOptions.png")
+   ### ===SEARCH INVENTORY WITH BUTTON=== ###
+   def inventory_searchInventoryButton() do
+      fill_field({:id, "txtBox_search"}, "A1688")
+      click({:id, "btn_search"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPIN0004-searchInventoryButton.png")
       Logger.debug "CPIN0004 Complete"
+   end
+
+   ### ===FILTER SEARCH=== ###
+   def inventory_filterSearch() do
       click({:id, "more_options"})
-      take_screenshot("CPIN0005-filterSearch_fewerOptions.png")
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      take_screenshot("CPIN0005-filterSearch_moreOptions.png")
       Logger.debug "CPIN0005 Complete"
+
+      click({:id, "more_options"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      take_screenshot("CPIN0006-filterSearch_fewerOptions.png")
+      Logger.debug "CPIN0006 Complete"
+
       click({:id, "more_options"})
       click({:id, "typeDropdown"})
       click({:css, "#filter_type .fa-square"})
       click({:id, "typeDropdown"})
-      :timer.sleep(250)
+      :timer.sleep(1000) # SLEEP 1 SECOND
       click({:id, "makeDropdown"})
       click({:css, "#filter_make .fa-square"})
       click({:id, "makeDropdown"})
-      :timer.sleep(250)
+      :timer.sleep(1000) # SLEEP 1 SECOND
       click({:id, "testingDropdown"})
       click({:css, "#filter_testing .fa-square"})
       click({:id, "testingDropdown"})
-      :timer.sleep(250)
+      :timer.sleep(1000) # SLEEP 1 SECOND
       click({:id, "carrierDropdown"})
       click({:css, "#filter_carrier .fa-square"})
       click({:id, "carrierDropdown"})
-      :timer.sleep(250)
+      :timer.sleep(1000) # SLEEP 1 SECOND
       click({:id, "modelDropdown"})
       click({:css, "#filter_model .fa-square"})
       click({:id, "modelDropdown"})
-      :timer.sleep(250)
+      :timer.sleep(1000) # SLEEP 1 SECOND
       click({:id, "capacityDropdown"})
       click({:css, "#filter_capacity .fa-square"})
       click({:id, "capacityDropdown"})
-      :timer.sleep(250)
+      :timer.sleep(1000) # SLEEP 1 SECOND
       click({:id, "btn_filter_search"})
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPIN0006-filterSearch_filterOptions.png")
-      Logger.debug "CPIN0006 Complete"
+      take_screenshot("CPIN0007-filterSearch_filterOptions.png")
+      Logger.debug "CPIN0007 Complete"
+
+      click({:css, "#selectedFiltersRow .in_current:nth-child(1) span"})
+      click({:css, "#clearSaveButtons .save_link"})
+      :timer.sleep(3000) # SLEEP 3 SECOND
+      take_screenshot("CPIN0008-filterSearch_clearFilter.png")
+      Logger.debug "CPIN0008 Complete"
+
+      click({:css, "#clearSaveButtons .clear_link"})
+      click({:css, "#clearSaveButtons .save_link"})
+      :timer.sleep(3000) # SLEEP 3 SECOND
+      take_screenshot("CPIN0009-filterSearch_clearAllFilter.png")
+      Logger.debug "CPIN0009 Complete"
+
       navigate_to(@inventoryPage)
       click({:id, "more_options"})
       click({:id, "txtBox_price_min"})
-      :timer.sleep(750)
+      :timer.sleep(750) # SLEEP .75 SECONDS
       send_keys(:num1)
-      :timer.sleep(750)
+      :timer.sleep(750) # SLEEP .75 SECONDS
       click({:id, "txtBox_price_max"})
-      :timer.sleep(750)
-      send_keys(:num5)
-      send_keys(:num0)
-      send_keys(:num0)
-      :timer.sleep(750)
+      :timer.sleep(750) # SLEEP .75 SECONDS
+      send_keys(:num5) # TYPES 5
+      send_keys(:num0) # TYPES 0
+      send_keys(:num0) # TYPES 0
+      :timer.sleep(750) # SLEEP .75 SECONDS
       click({:id, "txtBox_qty_min"})
-      :timer.sleep(750)
-      send_keys(:num1)
-      :timer.sleep(750)
+      :timer.sleep(750) # SLEEP .75 SECONDS
+      send_keys(:num1) # TYPES 1
+      :timer.sleep(750) # SLEEP .75 SECONDS
       click({:id, "txtBox_qty_max"})
-      :timer.sleep(750)
-      send_keys(:num5)
-      send_keys(:num0)
-      :timer.sleep(750)
+      :timer.sleep(750) # SLEEP .75 SECONDS
+      send_keys(:num5) # TYPES 5
+      send_keys(:num0) # TYPES 0
+      :timer.sleep(750) # SLEEP .75 SECONDS
       click({:id, "btn_filter_search"})
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPIN0007-filterSearch_valueRanges.png")
-      Logger.debug "CPIN0007 Complete"
+      take_screenshot("CPIN0010-filterSearch_valueRanges.png")
+      Logger.debug "CPIN0010 Complete"
+   end
+
+   ### ===VIEW FAVORITES=== ###
+   def inventory_viewFavorites() do
+      click({:css, "#invTableContent .item_row:nth-child(1) .favorite_item"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      click({:css, "#invTableContent .item_row:nth-child(2) .favorite_item"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      click({:css, "#invTableContent .item_row:nth-child(3) .favorite_item"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      click({:css, "#invTableContent .item_row:nth-child(4) .favorite_item"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      click({:css, "#invTableContent .item_row:nth-child(5) .favorite_item"})
+      take_screenshot("CPIN0011-viewFavorites_addFavorites.png")
+      Logger.debug "CPIN0011 Complete"
+
+      click({:css, "#invTabHeaders li:nth-child(2) .toggle_list_type"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      take_screenshot("CPIN0012-viewFavorites.png")
+      Logger.debug "CPIN0012 Complete"
+
+      click({:css, "#invTableContent tr:nth-child(1) .favorite_item"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      click({:css, "#invTableContent tr:nth-child(2) .favorite_item"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      click({:css, "#invTableContent tr:nth-child(3) .favorite_item"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      click({:css, "#invTableContent tr:nth-child(4) .favorite_item"})
+      :timer.sleep(250) # SLEEP .25 SECONDS
+      click({:css, "#invTableContent tr:nth-child(5) .favorite_item"})
+      take_screenshot("CPIN0013-viewFavorites_removeFavorites.png")
+      Logger.debug "CPIN0013 Complete"
+   end
+
+   ### ===VIEW PRICE DROPS=== ###
+   def inventory_viewPriceDrops() do
+      click({:css, "#invTabHeaders li:nth-child(3) .toggle_list_type"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      take_screenshot("CPIN0014-viewPriceDrops.png")
+      Logger.debug "CPIN0014 Complete"
+   end
+
+   ### ===INVENTORY FEATURES=== ###
+   def inventory_inventoryFeatures() do
+      click({:css, "#invTabHeaders li:nth-child(1) .toggle_list_type"})
+      :timer.sleep(1000) # SLEEP 1 SECOND
+      take_screenshot("CPIN0015-inventoryFeatures.png")
+      Logger.debug "CPIN0015 Complete"
+
+      click({:id, "per_page_selection"})
+      click({:css, "#per_page_selection option:nth-child(2)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0016-inventoryFeatures_show50.png")
+      Logger.debug "CPIN0016 Complete"
+
+      click({:id, "per_page_selection"})
+      click({:css, "#per_page_selection option:nth-child(3)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0017-inventoryFeatures_show100.png")
+      Logger.debug "CPIN0017 Complete"
+
+      click({:id, "per_page_selection"})
+      click({:css, "#per_page_selection option:nth-child(4)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0018-inventoryFeatures_show200.png")
+      Logger.debug "CPIN0018 Complete"
+
+      click({:id, "per_page_selection"})
+      click({:css, "#per_page_selection option:nth-child(5)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0019-inventoryFeatures_show500.png")
+      Logger.debug "CPIN0019 Complete"
+
+      click({:id, "per_page_selection"})
+      click({:css, "#per_page_selection option:nth-child(1)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0020-inventoryFeatures_show25.png")
+      Logger.debug "CPIN0020 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(2)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0021-inventoryFeatures_typeAZ.png")
+      Logger.debug "CPIN0021 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(2)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0022-inventoryFeatures_typeZA.png")
+      Logger.debug "CPIN0022 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(3)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0023-inventoryFeatures_makeAZ.png")
+      Logger.debug "CPIN0023 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(3)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0024-inventoryFeatures_makeZA.png")
+      Logger.debug "CPIN0024 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(4)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0025-inventoryFeatures_modelAZ.png")
+      Logger.debug "CPIN0025 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(4)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0026-inventoryFeatures_modelZA.png")
+      Logger.debug "CPIN0026 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(5)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0027-inventoryFeatures_testingAZ.png")
+      Logger.debug "CPIN0027 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(5)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0028-inventoryFeatures_testingZA.png")
+      Logger.debug "CPIN0028 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(6)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0029-inventoryFeatures_carrierAZ.png")
+      Logger.debug "CPIN0029 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(6)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0030-inventoryFeatures_carrierZA.png")
+      Logger.debug "CPIN0030 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(7)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0031-inventoryFeatures_priceHL.png")
+      Logger.debug "CPIN0031 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(7)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0032-inventoryFeatures_priceLH.png")
+      Logger.debug "CPIN0032 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(8)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0033-inventoryFeatures_quantityHL.png")
+      Logger.debug "CPIN0033 Complete"
+
+      click({:css, "#invTableHeaders tr th:nth-child(8)"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0034-inventoryFeatures_quantityLH.png")
+      Logger.debug "CPIN0034 Complete"
+
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      click({:css, "#invPagination nav ul li:nth-child(4) .page-link"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0035-inventoryFeatures_numberPagination.png")
+      Logger.debug "CPIN0035 Complete"
+
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      :timer.sleep(500) # SLEEP .5 SECONDS
+      send_text "Pg Dn"
+      click({:css, "#invPagination nav ul li:nth-child(2) .page-link"})
+      :timer.sleep(3000) # SLEEP 3 SECONDS
+      take_screenshot("CPIN0036-inventoryFeatures_arrowPagination.png")
+      Logger.debug "CPIN0036 Complete"
+
+      click({:css, "#primaryInvHeader a"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPIN0037-inventoryFeatures_downloadInventory.png")
+      Logger.debug "CPIN0037 Complete"
    end
 
    ####################
