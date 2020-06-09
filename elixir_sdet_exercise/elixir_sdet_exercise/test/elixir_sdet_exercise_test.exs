@@ -21,30 +21,30 @@ defmodule ElixirSdetExerciseTest do
 @urLO "https://www.citelectronics.com/logout.php"
 @uRLCA "https://www.citelectronics.com/main/h/customerApplication.php"
 
-test "custom login and signup" do
-  lP001_Create_an_account_button()
-  lP002_Forgot_Your_Password_button()
-  lP003_Log_in_button()
-  lP004_User_Type_check_login_5()
-  lP005_User_Type_check_login_6()
-  lP006_User_Type_check_login_7()
-  lP008_User_Type_check_login_9()
-  lP010_User_Type_check_login_11()
-  lP011_User_Type_check_login_12()
-  lP012_User_Type_check_login_13()
-  lP013_User_Type_check_login_14()
-  lP014_Save_and_Continue_All_filled_out()
-  lP015_Save_and_Continue_None_filled_out()
-  lP016_Save_and_Continue_missing_email()
-  lP017_Save_and_Continue_missing_Company_name()
-  lP018_Save_and_Continue_Missing_phone_number()
-  lP019_Save_and_Continue_Phone_length_above_10_characters()
-  lP020_Save_and_Continue_All_selected()
-  lP021_Save_and_Continue_none_selected()
-  lP022_Save_and_Continue_All_selected_but_locations()
-  lP023_Save_and_Continue_All_selected_but_where_they_found_us()
-  lP024_Save_and_Continue_All_selected_but_spending()
-end
+# test "custom login and signup" do
+#   lP001_Create_an_account_button()
+#   lP002_Forgot_Your_Password_button()
+#   lP003_Log_in_button()
+#   lP004_User_Type_check_login_5()
+#   lP005_User_Type_check_login_6()
+#   lP006_User_Type_check_login_7()
+#   lP008_User_Type_check_login_9()
+#   lP010_User_Type_check_login_11()
+#   lP011_User_Type_check_login_12()
+#   lP012_User_Type_check_login_13()
+#   lP013_User_Type_check_login_14()
+#   lP014_Save_and_Continue_All_filled_out()
+#   lP015_Save_and_Continue_None_filled_out()
+#   lP016_Save_and_Continue_missing_email()
+#   lP017_Save_and_Continue_missing_Company_name()
+#   lP018_Save_and_Continue_Missing_phone_number()
+#   lP019_Save_and_Continue_Phone_length_above_10_characters()
+#   lP020_Save_and_Continue_All_selected()
+#   lP021_Save_and_Continue_none_selected()
+#   lP022_Save_and_Continue_All_selected_but_locations()
+#   lP023_Save_and_Continue_All_selected_but_where_they_found_us()
+#   lP024_Save_and_Continue_All_selected_but_spending()
+# end
 
  def lP001_Create_an_account_button() do
   navigate_to(@uRLL) 
@@ -488,16 +488,19 @@ end
    @loginPage "https://www.citelectronics.com/login.php"
    @myCartPage "https://www.citelectronics.com/welcome.php?p=0&s=0"
    @dashboardPage "https://www.citelectronics.com/welcome.php?p=1&s=0"
+   @inventoryPage "https://www.citelectronics.com/welcome.php?p=0&s=2"
    @cPortal_email "testc@citelectronics.com"
    @cPortal_password "techteam"
 
    ### ===EXECUTE TEST=== ###
    test "EXECUTE TEST" do
+      Logger.debug "EXECUTE TEST START"
       set_window_size current_window_handle(), 1200, 1850 # RESIZES WINDOW
       cPortal_login() # LOGIN
-      cPortal_myCart() # MY CART
-      navigate_to(@dashboardPage) # DASHBOARD PAGE
+      # cPortal_myCart() # MY CART
+      # navigate_to(@dashboardPage) # DASHBOARD PAGE
       cPortal_inventory() # INVENTORY
+      Logger.debug "EXECUTE TEST END"
    end
 
    ###########################
@@ -507,12 +510,14 @@ end
    ### ===LOGIN=== ###
    def cPortal_login() do
       navigate_to(@loginPage)
-      take_screenshot("CPLO0001-cPortal_login_page.png")
+      take_screenshot("CPLO0001-login.png")
+      Logger.debug "CPLO0001 Complete"
       fill_field({:id, "emailTest"}, @cPortal_email)
       fill_field({:id, "passwordTest"}, @cPortal_password)
       click({:id, "login_button"})
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPLO0002-cPortal_dashboard.png")
+      take_screenshot("CPLO0002-dashboard.png")
+      Logger.debug "CPLO0002 Complete"
    end
 
    #############################
@@ -527,31 +532,34 @@ end
       myCart_inventory_applyfilter() # APPLIES FILTER
       myCart_inventory_addFavorites() # ADD TO FAVORITES
       myCart_inventory_addProduct() # ADD PRODUCT
-      myCart_inventory_makeOffer() # MAKE OFFER
-      myCart_inventory_adjustProduct() # ADJUST PRODUCT
-      myCart_inventory_removeProduct() # REMOVE PRODUCT
-      myCart_inventory_removeFavorites() # REMOVE FAVORITES
+      myCart_makeOffer() # MAKE OFFER
+      myCart_adjustProduct() # ADJUST PRODUCT
+      myCart_removeProduct() # REMOVE PRODUCT
+      myCart_removeFavorites() # REMOVE FAVORITES
    end
 
    ### ===NAVIGATE TO MY CART PAGE=== ###
    def cPortal_myCart_navigate() do
       click({:id, "testCart"})
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPMC0001-cPortal_myCart.png")
+      take_screenshot("CPMC0001-myCart.png")
+      Logger.debug "CPMC0001 Complete"
    end
  
    ### ===NAVIGATE TO INVENTORY=== ###
    def myCart_inventory_navigate() do
       click({:id, "view_inventory"})
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPMC0002-cPortal_myCart_inventory.png")
+      take_screenshot("CPMC0002-inventory.png")
+      Logger.debug "CPMC0002 Complete"
    end
 
    ### ===VIEW INVENTORY LIST=== ###
    def myCart_inventory_viewInventoryList() do
       click({:id, "btn_filter_search"})
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPMC0003-cPortal_myCart_inventory_viewInventoryList.png")
+      take_screenshot("CPMC0003-inventory_viewInventoryList.png")
+      Logger.debug "CPMC0003 Complete"
    end
 
    ### ===APPLIES FILTER=== ###
@@ -561,7 +569,8 @@ end
       fill_field({:id, "txtBox_qty_min"}, "2")
       click({:id, "save_p_q"})
       :timer.sleep(1000)
-      take_screenshot("CPMC0004-cPortal_myCart_inventory_applyFilter.png")
+      take_screenshot("CPMC0004-inventory_applyFilter.png")
+      Logger.debug "CPMC0004 Complete"
    end
 
    ### ===ADD TO FAVORITES=== ###
@@ -575,7 +584,8 @@ end
       click({:css, "#invTableContent .item_row:nth-child(4) .fav_td .favorite_item"})
       :timer.sleep(250)
       click({:css, "#invTableContent .item_row:nth-child(5) .fav_td .favorite_item"})
-      take_screenshot("CPMC0005-cPortal_myCart_inventory_addFavorites.png")
+      take_screenshot("CPMC0005-inventory_addFavorites.png")
+      Logger.debug "CPMC0005 Complete"
    end
 
    ### ===ADD PRODUCT=== ###
@@ -589,39 +599,46 @@ end
       click({:css, "#invTableContent .item_row:nth-child(4) .qty_td .add_all_btn"})
       :timer.sleep(250)
       click({:css, "#invTableContent .item_row:nth-child(5) .qty_td .add_all_btn"})
-      take_screenshot("CPMC0006-cPortal_myCart_inventory_addProduct.png")
+      take_screenshot("CPMC0006-inventory_addProduct.png")
+      Logger.debug "CPMC0006 Complete"
       navigate_to(@myCartPage)
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPMC0007-cPortal_myCart_inventory_addProduct_myCart.png")
+      take_screenshot("CPMC0007-inventory_addProduct_myCart.png")
+      Logger.debug "CPMC0007 Complete"
    end
 
    ### ===MAKE OFFER=== ###
-   def myCart_inventory_makeOffer() do
+   def myCart_makeOffer() do
       click({:class, "make_offer"})
       fill_field({:class, "offerInput"}, 1)
       click({:class, "save_offer"})
-      take_screenshot("CPMC0008-cPortal_myCart_inventory_makeOffer_save.png")
+      take_screenshot("CPMC0008-makeOffer_save.png")
+      Logger.debug "CPMC0008 Complete"
       click({:class, "edit_offer"})
       click({:class, "remove_offer"})
-      take_screenshot("CPMC0009-cPortal_myCart_inventory_makeOffer_remove.png")
+      take_screenshot("CPMC0009-makeOffer_remove.png")
+      Logger.debug "CPMC0009 Complete"
    end
 
    ### ===ADJUST PRODUCT=== ###
-   def myCart_inventory_adjustProduct() do
+   def myCart_adjustProduct() do
       click({:class, "quantityInput"})
       send_keys(:num1)
-      take_screenshot("CPMC0010-cPortal_myCart_inventory_adjustProduct_decrease.png")
+      take_screenshot("CPMC0010-adjustProduct_decrease.png")
+      Logger.debug "CPMC0010 Complete"
       click({:class, "quantityInput"})
       send_keys(:num2)
-      take_screenshot("CPMC0011-cPortal_myCart_inventory_adjustProduct_increase.png")
+      take_screenshot("CPMC0011-adjustProduct_increase.png")
+      Logger.debug "CPMC0011 Complete"
       click({:class, "quantityInput"})
       send_keys(:num1)
       click({:class, "takeAllButton"})
-      take_screenshot("CPMC0012-cPortal_myCart_inventory_adjustProduct_takeAll.png")
+      take_screenshot("CPMC0012-adjustProduct_takeAll.png")
+      Logger.debug "CPMC0012 Complete"
    end
 
    ### ===REMOVE PRODUCT=== ###
-   def myCart_inventory_removeProduct() do
+   def myCart_removeProduct() do
       click({:class, "removeAllButton"})
       :timer.sleep(250)
       click({:class, "removeAllButton"})
@@ -631,11 +648,12 @@ end
       click({:class, "removeAllButton"})
       :timer.sleep(250)
       click({:class, "removeAllButton"})
-      take_screenshot("CPMC0013-cPortal_myCart_inventory_removeProduct.png")
+      take_screenshot("CPMC0013-removeProduct.png")
+      Logger.debug "CPMC0013 Complete"
    end
 
    ### ===REMOVE FAVORITES=== ###
-   def myCart_inventory_removeFavorites() do
+   def myCart_removeFavorites() do
       click({:class, "iHeartClick"})
       :timer.sleep(250)
       click({:class, "iHeartClick"})
@@ -645,7 +663,8 @@ end
       click({:class, "iHeartClick"})
       :timer.sleep(250)
       click({:class, "iHeartClick"})
-      take_screenshot("CPMC0014-cPortal_myCart_inventory_removeFavorites.png")
+      take_screenshot("CPMC0014-removeFavorites.png")
+      Logger.debug "CPMC0014 Complete"
    end
 
    ###############################
@@ -655,13 +674,101 @@ end
    ### ===MY CART=== ###
    def cPortal_inventory() do
       cPortal_inventory_navigate() # NAVIGATE TO INVENTORY PAGE
+      cPortal_inventory_searchInventory() # SEARCH INVENTORY
+      navigate_to(@inventoryPage)
+      cPortal_inventory_searchInventoryButton() # SEARCH INVENTORY WITH BUTTON
+      navigate_to(@inventoryPage)
+      cPortal_inventory_filterSearch() # FILTER SEARCH
    end
 
    ### ===NAVIGATE TO INVENTORY PAGE=== ###
    def cPortal_inventory_navigate() do
       click({:id, "testInventory"})
       wait() # WAIT UNTIL PAGE IS LOADED
-      take_screenshot("CPIN0001-cPortal_inventory.png")
+      take_screenshot("CPIN0001-inventory.png")
+      Logger.debug "CPIN0001 Complete"
+   end
+
+   ### ===SEARCH INVENTORY=== ###
+   def cPortal_inventory_searchInventory() do
+      fill_field({:id, "txtBox_search"}, "A1688")
+      send_keys(:enter)
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPIN0002-searchInventory.png")
+      Logger.debug "CPIN0002 Complete"
+   end
+
+   ### ===SEARCH INVENTORY WITH BUTTON=== ###
+   def cPortal_inventory_searchInventoryButton() do
+      fill_field({:id, "txtBox_search"}, "A1688")
+      click({:id, "btn_search"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPIN0003-searchInventoryButton.png")
+      Logger.debug "CPIN0003 Complete"
+   end
+
+   ### ===FILTER SEARCH=== ###
+   def cPortal_inventory_filterSearch() do
+      click({:id, "more_options"})
+      take_screenshot("CPIN0004-filterSearch_moreOptions.png")
+      Logger.debug "CPIN0004 Complete"
+      click({:id, "more_options"})
+      take_screenshot("CPIN0005-filterSearch_fewerOptions.png")
+      Logger.debug "CPIN0005 Complete"
+      click({:id, "more_options"})
+      click({:id, "typeDropdown"})
+      click({:css, "#filter_type .fa-square"})
+      click({:id, "typeDropdown"})
+      :timer.sleep(250)
+      click({:id, "makeDropdown"})
+      click({:css, "#filter_make .fa-square"})
+      click({:id, "makeDropdown"})
+      :timer.sleep(250)
+      click({:id, "testingDropdown"})
+      click({:css, "#filter_testing .fa-square"})
+      click({:id, "testingDropdown"})
+      :timer.sleep(250)
+      click({:id, "carrierDropdown"})
+      click({:css, "#filter_carrier .fa-square"})
+      click({:id, "carrierDropdown"})
+      :timer.sleep(250)
+      click({:id, "modelDropdown"})
+      click({:css, "#filter_model .fa-square"})
+      click({:id, "modelDropdown"})
+      :timer.sleep(250)
+      click({:id, "capacityDropdown"})
+      click({:css, "#filter_capacity .fa-square"})
+      click({:id, "capacityDropdown"})
+      :timer.sleep(250)
+      click({:id, "btn_filter_search"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPIN0006-filterSearch_filterOptions.png")
+      Logger.debug "CPIN0006 Complete"
+      navigate_to(@inventoryPage)
+      click({:id, "more_options"})
+      click({:id, "txtBox_price_min"})
+      :timer.sleep(750)
+      send_keys(:num1)
+      :timer.sleep(750)
+      click({:id, "txtBox_price_max"})
+      :timer.sleep(750)
+      send_keys(:num5)
+      send_keys(:num0)
+      send_keys(:num0)
+      :timer.sleep(750)
+      click({:id, "txtBox_qty_min"})
+      :timer.sleep(750)
+      send_keys(:num1)
+      :timer.sleep(750)
+      click({:id, "txtBox_qty_max"})
+      :timer.sleep(750)
+      send_keys(:num5)
+      send_keys(:num0)
+      :timer.sleep(750)
+      click({:id, "btn_filter_search"})
+      wait() # WAIT UNTIL PAGE IS LOADED
+      take_screenshot("CPIN0007-filterSearch_valueRanges.png")
+      Logger.debug "CPIN0007 Complete"
    end
 
    ####################
@@ -675,6 +782,4 @@ end
          _ -> true
       end
   end
-   #  delete_cookies()
-  # refresh_page()
 end
