@@ -1611,6 +1611,7 @@ defmodule ElixirSdetExerciseTest do
     #   hP022_Footer_Inventory()
     #   hP023_Footer_Careers()
     #   hP024_Footer_Abount_US()
+    #   hP025_Back_To_top()
     end
 
     def hP001_Check_Site_Load() do
@@ -1798,12 +1799,16 @@ defmodule ElixirSdetExerciseTest do
       wait()
       take_screenshot("HP024-Footer-Abount-US.png") 
     end
-    # def hP025_Back_To_top() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP025-Back-To-top.png") 
-    # end
+    def hP025_Back_To_top() do
+      navigate_to(@uRLH) 
+      wait()
+       send_text "Pg Dn"
+      :timer.sleep(500)
+      send_text "Pg Dn"
+      click({:css, "#section_backToTop #topTest"})
+      wait()
+      take_screenshot("HP025-Back-To-top.png") 
+    end
     # def hP026_Hamburger_dropdown() do
     #   navigate_to(@uRLH) 
     #   wait()
