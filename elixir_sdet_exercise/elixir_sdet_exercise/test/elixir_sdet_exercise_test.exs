@@ -25,41 +25,44 @@ defmodule ElixirSdetExerciseTest do
   @urLO "https://www.citelectronics.com/logout.php"
   @uRLCA "https://www.citelectronics.com/main/h/customerApplication.php"
 
-  # test "custom login and signup" do
-    # lP001_Create_an_account_button()
-    # lP002_Forgot_Your_Password_button()
-    # lP003_Log_in_button()
-    # lP004_User_Type_check_login_5()
-    # lP005_User_Type_check_login_6()
-    # lP006_User_Type_check_login_7()
-    # lP008_User_Type_check_login_9()
-    # lP010_User_Type_check_login_11()
-    # lP011_User_Type_check_login_12()
-    # lP012_User_Type_check_login_13()
-    # lP013_User_Type_check_login_14()
-    # lP014_Save_and_Continue_All_filled_out()
-    # lP015_Save_and_Continue_None_filled_out()
-    # lP016_Save_and_Continue_missing_email()
-    # lP017_Save_and_Continue_missing_Company_name()
-    # lP018_Save_and_Continue_Missing_phone_number()
-    # lP019_Save_and_Continue_Phone_length_above_10_characters()
-    # lP020_Save_and_Continue_All_selected()
-    # lP021_Save_and_Continue_none_selected()
-    # lP022_Save_and_Continue_All_selected_but_locations()
-    # lP023_Save_and_Continue_All_selected_but_where_they_found_us()
-    # lP024_Save_and_Continue_All_selected_but_spending()
-    # lP025_Create_account()
-    # lP026_Create_account_no_terms()
-    # lP027_Create_account_no_feilds()
-    # lP028_Create_account_no_password()
-    # lP029_Create_account_no_confirm()
-    # lP030_Create_account_under_6()
-    # lP031_Create_account_all_caps()
-    # lP032_Create_account_all_lowercase()
-    # lP033_Create_account_policy()
-    # lP034_Create_account_policy_accept()
-    # lP035_Create_account_policy_decline()
-  # end
+  test "custom login and signup 1-15" do
+    lP001_Create_an_account_button()
+    lP002_Forgot_Your_Password_button()
+    lP003_Log_in_button()
+    lP004_User_Type_check_login_5()
+    lP005_User_Type_check_login_6()
+    lP006_User_Type_check_login_7()
+    lP008_User_Type_check_login_9()
+    lP010_User_Type_check_login_11()
+    lP011_User_Type_check_login_12()
+    lP012_User_Type_check_login_13()
+    lP013_User_Type_check_login_14()
+    lP014_Save_and_Continue_All_filled_out()
+    lP015_Save_and_Continue_None_filled_out()
+  end
+    test "custom login and signup 1-31" do
+    lP016_Save_and_Continue_missing_email()
+    lP017_Save_and_Continue_missing_Company_name()
+    lP018_Save_and_Continue_Missing_phone_number()
+    lP019_Save_and_Continue_Phone_length_above_10_characters()
+    lP020_Save_and_Continue_All_selected()
+    lP021_Save_and_Continue_none_selected()
+    lP022_Save_and_Continue_All_selected_but_locations()
+    lP023_Save_and_Continue_All_selected_but_where_they_found_us()
+    lP024_Save_and_Continue_All_selected_but_spending()
+    lP026_Create_account_no_terms()
+    lP027_Create_account_no_feilds()
+    lP028_Create_account_no_password()
+    :timer.sleep(3000)
+    lP029_Create_account_no_confirm()
+    lP030_Create_account_under_6()
+    lP033_Create_account_policy()
+    lP034_Create_account_policy_accept()
+    lP035_Create_account_policy_decline()
+    lP032_Create_account_all_lowercase()
+    lP025_Create_account()
+    lP031_Create_account_all_caps()
+  end
 
   def lP001_Create_an_account_button() do
     navigate_to(@uRLL) 
@@ -674,7 +677,6 @@ defmodule ElixirSdetExerciseTest do
       click({:id, "checkbox_terms"})
       click({:id, "button_submitApplication"})
       wait()
-      :timer.sleep(5000)
       take_screenshot("LP029-Create_account_no_confirm.png") 
       end 
   def lP030_Create_account_under_6() do
@@ -713,7 +715,6 @@ defmodule ElixirSdetExerciseTest do
       fill_field(confirmPass, "Wel")
       click({:id, "checkbox_terms"})
       click({:id, "button_submitApplication"})
-      wait()
       take_screenshot("LP030-Create_account_under_6.png") 
       end  
   def lP031_Create_account_all_caps() do
@@ -791,7 +792,6 @@ defmodule ElixirSdetExerciseTest do
       fill_field(confirmPass, "welcome1")
       click({:id, "checkbox_terms"})
       click({:id, "button_submitApplication"})
-      wait()
       take_screenshot("LP032-Create_account_all_lowercase.png") 
       end 
   def lP033_Create_account_policy() do
@@ -1587,18 +1587,18 @@ defmodule ElixirSdetExerciseTest do
   @uRLH  "https://www.citelectronics.com"
 
     test "Home Page" do
-      # hP001_Check_Site_Load()
-      # hP002_Nav_Spanish_Dropdown_Load()
-      # hP003_Nav_English_Dropdown_Load()
-      # hP004_Nav_Login_Load()
-      # hP005_Nav_Home_Load()
-      # hP006_Nav_Wholesale_Load()
-      # hP007_Nav_Wholesale_Dropdown_Purchasing_Proccess_Load()
-      # hP008_Nav_Wholesale_Dropdown_Quality_Guide_Load()
-      # hP009_Nav_Wholesale_Dropdown_FAQ_Load()
-      # hP010_Nav_Wholesale_Dropdown_Inventory_Load()
-      # hP011_Nav_Retail_Load()
-      # hP012_Nav_About_Us_Load()
+      hP001_Check_Site_Load()
+      hP002_Nav_Spanish_Dropdown_Load()
+      hP003_Nav_English_Dropdown_Load()
+      hP004_Nav_Login_Load()
+      hP005_Nav_Home_Load()
+      hP006_Nav_Wholesale_Load()
+      hP007_Nav_Wholesale_Dropdown_Purchasing_Proccess_Load()
+      hP008_Nav_Wholesale_Dropdown_Quality_Guide_Load()
+      hP009_Nav_Wholesale_Dropdown_FAQ_Load()
+      hP010_Nav_Wholesale_Dropdown_Inventory_Load()
+      hP011_Nav_Retail_Load()
+      hP012_Nav_About_Us_Load()
     end
 
     def hP001_Check_Site_Load() do
