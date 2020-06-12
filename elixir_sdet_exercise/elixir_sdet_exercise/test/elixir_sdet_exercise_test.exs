@@ -25,44 +25,44 @@ defmodule ElixirSdetExerciseTest do
   @urLO "https://www.citelectronics.com/logout.php"
   @uRLCA "https://www.citelectronics.com/main/h/customerApplication.php"
 
-  test "custom login and signup 1-15" do
-    lP001_Create_an_account_button()
-    lP002_Forgot_Your_Password_button()
-    lP003_Log_in_button()
-    lP004_User_Type_check_login_5()
-    lP005_User_Type_check_login_6()
-    lP006_User_Type_check_login_7()
-    lP008_User_Type_check_login_9()
-    lP010_User_Type_check_login_11()
-    lP011_User_Type_check_login_12()
-    lP012_User_Type_check_login_13()
-    lP013_User_Type_check_login_14()
-    lP014_Save_and_Continue_All_filled_out()
-    lP015_Save_and_Continue_None_filled_out()
-  end
-    test "custom login and signup 1-31" do
-    lP016_Save_and_Continue_missing_email()
-    lP017_Save_and_Continue_missing_Company_name()
-    lP018_Save_and_Continue_Missing_phone_number()
-    lP019_Save_and_Continue_Phone_length_above_10_characters()
-    lP020_Save_and_Continue_All_selected()
-    lP021_Save_and_Continue_none_selected()
-    lP022_Save_and_Continue_All_selected_but_locations()
-    lP023_Save_and_Continue_All_selected_but_where_they_found_us()
-    lP024_Save_and_Continue_All_selected_but_spending()
-    lP026_Create_account_no_terms()
-    lP027_Create_account_no_feilds()
-    lP028_Create_account_no_password()
-    :timer.sleep(3000)
-    lP029_Create_account_no_confirm()
-    lP030_Create_account_under_6()
-    lP033_Create_account_policy()
-    lP034_Create_account_policy_accept()
-    lP035_Create_account_policy_decline()
-    lP032_Create_account_all_lowercase()
-    lP025_Create_account()
-    lP031_Create_account_all_caps()
-  end
+  # test "custom login and signup 1-15" do
+  #   lP001_Create_an_account_button()
+  #   lP002_Forgot_Your_Password_button()
+  #   lP003_Log_in_button()
+  #   lP004_User_Type_check_login_5()
+  #   lP005_User_Type_check_login_6()
+  #   lP006_User_Type_check_login_7()
+  #   lP008_User_Type_check_login_9()
+  #   lP010_User_Type_check_login_11()
+  #   lP011_User_Type_check_login_12()
+  #   lP012_User_Type_check_login_13()
+  #   lP013_User_Type_check_login_14()
+  #   lP014_Save_and_Continue_All_filled_out()
+  #   lP015_Save_and_Continue_None_filled_out()
+  # end
+  #   test "custom login and signup 1-31" do
+  #   lP016_Save_and_Continue_missing_email()
+  #   lP017_Save_and_Continue_missing_Company_name()
+  #   lP018_Save_and_Continue_Missing_phone_number()
+  #   lP019_Save_and_Continue_Phone_length_above_10_characters()
+  #   lP020_Save_and_Continue_All_selected()
+  #   lP021_Save_and_Continue_none_selected()
+  #   lP022_Save_and_Continue_All_selected_but_locations()
+  #   lP023_Save_and_Continue_All_selected_but_where_they_found_us()
+  #   lP024_Save_and_Continue_All_selected_but_spending()
+  #   lP026_Create_account_no_terms()
+  #   lP027_Create_account_no_feilds()
+  #   lP028_Create_account_no_password()
+  #   :timer.sleep(3000)
+  #   lP029_Create_account_no_confirm()
+  #   lP030_Create_account_under_6()
+  #   lP033_Create_account_policy()
+  #   lP034_Create_account_policy_accept()
+  #   lP035_Create_account_policy_decline()
+  #   lP032_Create_account_all_lowercase()
+  #   lP025_Create_account()
+  #   lP031_Create_account_all_caps()
+  # end
 
   def lP001_Create_an_account_button() do
     navigate_to(@uRLL) 
@@ -916,17 +916,17 @@ defmodule ElixirSdetExerciseTest do
    @cPortal_password "techteam" # CPORTAL PASSWORD
 
    ### ===EXECUTE TEST=== ###
-   test "EXECUTE TEST" do
-      Logger.debug "EXECUTE TEST START"
-      set_window_size current_window_handle(), 1920, 1250 # RESIZES WINDOW
-      # navigate_to(@homePage)
-      # set_cookie(%{name: "language", value: "1"})
-      cPortal_login() # LOGIN TESTS
-      cPortal_myCart() # MY CART TESTS
-      navigate_to(@dashboardPage)
-      cPortal_inventory() # INVENTORY TESTS
-      Logger.debug "EXECUTE TEST END"
-   end
+  #  test "EXECUTE TEST" do
+  #     Logger.debug "EXECUTE TEST START"
+  #     set_window_size current_window_handle(), 1920, 1250 # RESIZES WINDOW
+  #     # navigate_to(@homePage)
+  #     # set_cookie(%{name: "language", value: "1"})
+  #     cPortal_login() # LOGIN TESTS
+  #     cPortal_myCart() # MY CART TESTS
+  #     navigate_to(@dashboardPage)
+  #     cPortal_inventory() # INVENTORY TESTS
+  #     Logger.debug "EXECUTE TEST END"
+  #  end
 
    ###########################
    ### ===CPORTAL LOGIN=== ###
@@ -1587,18 +1587,30 @@ defmodule ElixirSdetExerciseTest do
   @uRLH  "https://www.citelectronics.com"
 
     test "Home Page" do
-      hP001_Check_Site_Load()
-      hP002_Nav_Spanish_Dropdown_Load()
-      hP003_Nav_English_Dropdown_Load()
-      hP004_Nav_Login_Load()
-      hP005_Nav_Home_Load()
-      hP006_Nav_Wholesale_Load()
-      hP007_Nav_Wholesale_Dropdown_Purchasing_Proccess_Load()
-      hP008_Nav_Wholesale_Dropdown_Quality_Guide_Load()
-      hP009_Nav_Wholesale_Dropdown_FAQ_Load()
-      hP010_Nav_Wholesale_Dropdown_Inventory_Load()
-      hP011_Nav_Retail_Load()
-      hP012_Nav_About_Us_Load()
+    #   hP001_Check_Site_Load()
+    #   hP002_Nav_Spanish_Dropdown_Load()
+    #   hP003_Nav_English_Dropdown_Load()
+    #   hP004_Nav_Login_Load()
+    #   hP005_Nav_Home_Load()
+    #   hP006_Nav_Wholesale_Load()
+    #   hP007_Nav_Wholesale_Dropdown_Purchasing_Proccess_Load()
+    #   hP008_Nav_Wholesale_Dropdown_Quality_Guide_Load()
+    #   hP009_Nav_Wholesale_Dropdown_FAQ_Load()
+    #   hP010_Nav_Wholesale_Dropdown_Inventory_Load()
+    #   hP011_Nav_Retail_Load()
+    #   hP012_Nav_About_Us_Load()
+    #   hP013_Shop_for_button()
+    #   hP014_Become_a_Button()
+    #   hP015_Retail_learn_more_button()
+    #   hP016_Wholesale_Learn_more_button()
+    #   hP017_Footer_Create_an_Account()
+    #   hP018_Footer_My_Account()
+    #   hP019_Footer_FAQ()
+    #   hP020_Footer_Quality_Guide()
+    #   hP021_Footer_Purchasing_Process()
+    #   hP022_Footer_Inventory()
+    #   hP023_Footer_Careers()
+    #   hP024_Footer_Abount_US()
     end
 
     def hP001_Check_Site_Load() do
@@ -1690,78 +1702,102 @@ defmodule ElixirSdetExerciseTest do
       click({:css, "#subNav .container-fluid div:nth-child(2) .nav .about_link"})
       take_screenshot("HP012-Nav-About-Us-Load.png") 
     end
-    # def hP013_Shop_for_button() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP013-Shop-for-button.png") 
-    # end
-    # def hP014_Become_a_Button() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP014-Become-a-Button.png") 
-    # end
-    # def hP015_Retail_learn_more_button() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP015-Retail-learn-more-button.png") 
-    # end
-    # def hP016_Wholesale_Learn_more_button() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP016-Wholesale-Learn-more-button.png") 
-    # end
-    # def hP017_Footer_Create_an_Account() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP017-Footer-Create-an-Account.png") 
-    # end
-    # def hP018_Footer_My_Account() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP018-Footer-My-Account.png") 
-    # end
-    # def hP019_Footer_FAQ() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP019-Footer-FAQ.png") 
-    # end
-    # def hP020_Footer_Quality_Guide() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP020-Footer-Quality-Guide.png") 
-    # end
-    # def hP021_Footer_Purchasing_Process() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP021-Footer-Purchasing-Process.png") 
-    # end
-    # def hP022_Footer_Inventory() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP022-Footer-Inventory.png") 
-    # end
-    # def hP023_Footer_Careers() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP023-Footer-Careers.png") 
-    # end
-    # def hP024_Footer_Abount_US() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP024-Footer-Abount-US.png") 
-    # end
+    def hP013_Shop_for_button() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "chevron_left"})
+      wait()
+      take_screenshot("HP013-Shop-for-button.png") 
+    end
+    def hP014_Become_a_Button() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "chevron_right"})
+      wait()
+      take_screenshot("HP014-Become-a-Button.png") 
+    end
+    def hP015_Retail_learn_more_button() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "lmButtonTest"})
+      take_screenshot("HP015-Retail-learn-more-button.png") 
+    end
+    def hP016_Wholesale_Learn_more_button() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "lmButtonwTest"})
+      take_screenshot("HP016-Wholesale-Learn-more-button.png") 
+    end
+    def hP017_Footer_Create_an_Account() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "caTest"})
+      take_screenshot("HP017-Footer-Create-an-Account.png") 
+    end
+    def hP018_Footer_My_Account() do
+      navigate_to(@uRLH) 
+      wait()
+      click({:id, "maTest"})
+      take_screenshot("HP018-Footer-My-Account.png") 
+    end
+    def hP019_Footer_FAQ() do
+      navigate_to(@uRLH) 
+      wait()
+      send_text "Pg Dn"
+      click({:css, "#footer_getStarted #faqTest"})
+      wait()
+      take_screenshot("HP019-Footer-FAQ.png") 
+    end
+    def hP020_Footer_Quality_Guide() do
+      navigate_to(@uRLH) 
+      wait()
+      send_text "Pg Dn"
+      :timer.sleep(500)
+      send_text "Pg Dn"
+      click({:css, "#footer_bottom #footer_resources #qgTest"})
+      wait()
+      take_screenshot("HP020-Footer-Quality-Guide.png") 
+    end
+    def hP021_Footer_Purchasing_Process() do
+      navigate_to(@uRLH) 
+      wait()
+       send_text "Pg Dn"
+      :timer.sleep(500)
+      send_text "Pg Dn"
+      click({:css, "#footer_resources #ppTest"})
+      wait()
+      take_screenshot("HP021-Footer-Purchasing-Process.png") 
+    end
+    def hP022_Footer_Inventory() do
+      navigate_to(@uRLH) 
+      wait()
+       send_text "Pg Dn"
+      :timer.sleep(500)
+      send_text "Pg Dn"
+      click({:css, "#footer_resources #iTest"})
+      wait()
+      take_screenshot("HP022-Footer-Inventory.png") 
+    end
+    def hP023_Footer_Careers() do
+      navigate_to(@uRLH) 
+      wait()
+       send_text "Pg Dn"
+      :timer.sleep(500)
+      send_text "Pg Dn"
+      click({:css, "#footer_company #cTest"})
+      wait()
+      take_screenshot("HP023-Footer-Careers.png") 
+    end
+    def hP024_Footer_Abount_US() do
+      navigate_to(@uRLH) 
+      wait()
+       send_text "Pg Dn"
+      :timer.sleep(500)
+      send_text "Pg Dn"
+      click({:css, "#footer_company #auTest"})
+      wait()
+      take_screenshot("HP024-Footer-Abount-US.png") 
+    end
     # def hP025_Back_To_top() do
     #   navigate_to(@uRLH) 
     #   wait()
