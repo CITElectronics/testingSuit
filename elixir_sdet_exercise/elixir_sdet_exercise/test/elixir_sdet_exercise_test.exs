@@ -1586,7 +1586,7 @@ defmodule ElixirSdetExerciseTest do
 
   @uRLH  "https://www.citelectronics.com"
 
-    test "Home Page" do
+    # test "Home Page" do
     #   hP001_Check_Site_Load()
     #   hP002_Nav_Spanish_Dropdown_Load()
     #   hP003_Nav_English_Dropdown_Load()
@@ -1612,7 +1612,8 @@ defmodule ElixirSdetExerciseTest do
     #   hP023_Footer_Careers()
     #   hP024_Footer_Abount_US()
     #   hP025_Back_To_top()
-    end
+    # hP026_Hamburger_dropdown()
+    # end
 
     def hP001_Check_Site_Load() do
       navigate_to(@uRLH) 
@@ -1809,12 +1810,13 @@ defmodule ElixirSdetExerciseTest do
       wait()
       take_screenshot("HP025-Back-To-top.png") 
     end
-    # def hP026_Hamburger_dropdown() do
-    #   navigate_to(@uRLH) 
-    #   wait()
-    #   click({:id, "login_li"})
-    #   take_screenshot("HP026-Hamburger-dropdown.png") 
-    # end
+    def hP026_Hamburger_dropdown() do
+      navigate_to(@uRLH) 
+      wait()
+      set_window_size current_window_handle(), 425, 825 # RESIZES WINDOW
+      click({:id, "login_li"})
+      take_screenshot("HP026-Hamburger-dropdown.png") 
+    end
     # def hP027_Hamburger_English_dropdown() do
     #   navigate_to(@uRLH) 
     #   wait()
@@ -2071,4 +2073,31 @@ defmodule ElixirSdetExerciseTest do
     #   wait()
     #   take_screenshot("HP077-Shop-now-Sellingtech-button.png") 
     # end
-  end
+
+#################################################################################################################################################################################################################
+############################################################################################TechDepot Page############################################################################################################
+#################################################################################################################################################################################################################
+ @uRLT  "https://www.citelectronics.com/td/techdepot_D/home/index.php"
+  @tdEmail "testtd@citelectronics.com" ##techdepotd
+    test "TechDepot Page" do
+      tD001_Check_Site_Load()
+    end
+
+    def tD001_Check_Site_Load() do
+      navigate_to(@uRLT) 
+      wait()
+      delete_cookies()
+      email = find_element(:id, "emailTest")
+      password = find_element(:id, "passwordTest") 
+      fill_field(email, @tdEmail)
+      fill_field(password, "techteam")
+      click({:id, "login_button"})
+      wait()
+      loginIsThere = find_element(:id, "user")
+      testEnd = inner_text(loginIsThere)
+      Logger.debug testEnd
+      wait()
+      take_screenshot("tP001-Check-Site-load.png") 
+      navigate_to(@urLO)
+    end   
+ end    
